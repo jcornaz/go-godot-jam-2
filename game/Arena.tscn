@@ -34,27 +34,27 @@ shape = SubResource( 1 )
 position = Vector2( -531, -1 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 424, 1 )
-player_id = 2
+position = Vector2( 448, 1 )
+player_id = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="ArenaBounds" type="StaticBody2D" parent="."]
 visible = false
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
-[node name="UpperBound" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="UpperBound" type="CollisionPolygon2D" parent="ArenaBounds"]
 polygon = PoolVector2Array( -408, -461, -396, -382, 421, -382, 431, -456 )
 
-[node name="LowerBound" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="LowerBound" type="CollisionPolygon2D" parent="ArenaBounds"]
 polygon = PoolVector2Array( -387, 380, 418, 379, 474, 493, -437, 483 )
 
-[node name="LeftBound" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="LeftBound" type="CollisionPolygon2D" parent="ArenaBounds"]
 polygon = PoolVector2Array( -399, -382, -503, -365, -598, -315, -677, -243, -727, -164, -757, -67, -761, 50, -738, 140, -691, 224, -628, 295, -538, 350, -454, 377, -385, 381, -427, 455, -812, 330, -866, -1, -759, -350, -407, -461 )
 
-[node name="RightBound" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="RightBound" type="CollisionPolygon2D" parent="ArenaBounds"]
 polygon = PoolVector2Array( 419, -384, 525, -355, 604, -312, 674, -247, 722, -179, 751, -94, 763, -1, 753, 96, 719, 178, 676, 247, 612, 307, 516, 358, 417, 380, 474, 495, 854, 326, 852, -290, 431, -453 )

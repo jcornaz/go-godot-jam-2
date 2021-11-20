@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://lib/ShapePolygon2D.gd" type="Script" id=1]
 [ext_resource path="res://game/Player.gd" type="Script" id=2]
+[ext_resource path="res://resources/fonts/Kenney Blocks.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.025
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 20.0
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 3 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -29,3 +34,51 @@ antialiased = true
 polygon = PoolVector2Array( 20, 0, 18.4776, 7.65367, 14.1421, 14.1421, 7.65367, 18.4776, 1.22461e-15, 20, -7.65367, 18.4776, -14.1421, 14.1421, -18.4776, 7.65367, -20, 2.44921e-15, -18.4776, -7.65367, -14.1421, -14.1421, -7.65367, -18.4776, -3.67382e-15, -20, 7.65367, -18.4776, 14.1421, -14.1421, 18.4776, -7.65367, 20, 0 )
 script = ExtResource( 1 )
 shape = SubResource( 2 )
+
+[node name="GUI_Player2" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="GUI_Player2"]
+margin_left = 1608.0
+margin_top = 50.0
+margin_right = 1764.0
+margin_bottom = 89.0
+value = 80.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GUI_Player2"]
+margin_left = 1362.0
+margin_top = 35.0
+margin_right = 1582.0
+margin_bottom = 95.0
+custom_fonts/font = SubResource( 3 )
+text = "Player 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GUI_Player1" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="GUI_Player1"]
+margin_left = 323.0
+margin_top = 44.0
+margin_right = 479.0
+margin_bottom = 83.0
+value = 80.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GUI_Player1"]
+margin_left = 75.0
+margin_top = 29.0
+margin_right = 295.0
+margin_bottom = 89.0
+custom_fonts/font = SubResource( 3 )
+text = "Player 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
