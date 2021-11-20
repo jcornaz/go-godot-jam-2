@@ -1,10 +1,13 @@
 extends KinematicBody2D
 
-const MAX_SPEED = 10000
+export var player_id: int = 2
+const SPEED = 15000
 
 func _physics_process(delta):
-	var velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var velocity = Input.get_vector(
+		str("move_left_player", player_id), 
+		str("move_right_player", player_id), 
+		str("move_up_player", player_id), 
+		str("move_down_player", player_id))
 	
-	move_and_slide(velocity * delta * MAX_SPEED)
-	
-	
+	move_and_slide(velocity * delta * SPEED)

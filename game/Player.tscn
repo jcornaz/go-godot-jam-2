@@ -4,8 +4,10 @@
 [ext_resource path="res://game/Player.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 20.025
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 20.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -13,9 +15,17 @@ script = ExtResource( 2 )
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="CircleTexture" type="Polygon2D" parent="."]
+[node name="RingTexture" type="Polygon2D" parent="."]
 color = Color( 0.0823529, 0.627451, 0.270588, 1 )
 antialiased = true
-polygon = PoolVector2Array( 10, 0, 9.2388, 3.82683, 7.07107, 7.07107, 3.82683, 9.2388, 6.12303e-16, 10, -3.82683, 9.2388, -7.07107, 7.07107, -9.2388, 3.82683, -10, 1.22461e-15, -9.2388, -3.82683, -7.07107, -7.07107, -3.82683, -9.2388, -1.83691e-15, -10, 3.82683, -9.2388, 7.07107, -7.07107, 9.2388, -3.82683, 10, 0 )
+polygon = PoolVector2Array( 20, 0, 18.4776, 7.65367, 14.1421, 14.1421, 7.65367, 18.4776, 1.22461e-15, 20, -7.65367, 18.4776, -14.1421, 14.1421, -18.4776, 7.65367, -20, 2.44921e-15, -18.4776, -7.65367, -14.1421, -14.1421, -7.65367, -18.4776, -3.67382e-15, -20, 7.65367, -18.4776, 14.1421, -14.1421, 18.4776, -7.65367, 20, 0 )
+script = ExtResource( 1 )
+shape = SubResource( 2 )
+
+[node name="CoreTexture" type="Polygon2D" parent="."]
+scale = Vector2( 0.8, 0.8 )
+color = Color( 0.372549, 0.372549, 0.372549, 1 )
+antialiased = true
+polygon = PoolVector2Array( 20, 0, 18.4776, 7.65367, 14.1421, 14.1421, 7.65367, 18.4776, 1.22461e-15, 20, -7.65367, 18.4776, -14.1421, 14.1421, -18.4776, 7.65367, -20, 2.44921e-15, -18.4776, -7.65367, -14.1421, -14.1421, -7.65367, -18.4776, -3.67382e-15, -20, 7.65367, -18.4776, 14.1421, -14.1421, 18.4776, -7.65367, 20, 0 )
 script = ExtResource( 1 )
 shape = SubResource( 2 )
