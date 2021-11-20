@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var player_id: int = 2
+export var player_id: int = 1
 const SPEED = 15000
 
 func _physics_process(delta):
