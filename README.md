@@ -1,2 +1,2 @@
-# go-godot-jam-2
+# Elemental Wisp Arena
 Go Godot Jam 2 entry
