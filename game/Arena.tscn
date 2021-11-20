@@ -9,14 +9,20 @@ height = 800.0
 
 [node name="Arena" type="Node2D"]
 
-[node name="RingTexture" type="Polygon2D" parent="."]
+[node name="Textures" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="RingTexture" type="Polygon2D" parent="Textures"]
 rotation = 1.5708
 color = Color( 0.180392, 0.172549, 0.172549, 1 )
 polygon = PoolVector2Array( 400, 400, 398.074, 439.207, 392.314, 478.036, 382.776, 516.114, 369.552, 553.073, 352.768, 588.559, 332.588, 622.228, 309.204, 653.757, 282.843, 682.843, 253.757, 709.204, 222.228, 732.588, 188.559, 752.768, 153.073, 769.552, 116.114, 782.776, 78.0361, 792.314, 39.2069, 798.074, 2.44921e-14, 800, -39.2069, 798.074, -78.0361, 792.314, -116.114, 782.776, -153.073, 769.552, -188.559, 752.768, -222.228, 732.588, -253.757, 709.204, -282.843, 682.843, -309.204, 653.757, -332.588, 622.228, -352.768, 588.559, -369.552, 553.073, -382.776, 516.114, -392.314, 478.036, -398.074, 439.207, -400, 400, -400, -400, -398.074, -439.207, -392.314, -478.036, -382.776, -516.114, -369.552, -553.073, -352.768, -588.559, -332.588, -622.228, -309.204, -653.757, -282.843, -682.843, -253.757, -709.204, -222.228, -732.588, -188.559, -752.768, -153.073, -769.552, -116.114, -782.776, -78.0361, -792.314, -39.2069, -798.074, -7.34764e-14, -800, 39.2069, -798.074, 78.0361, -792.314, 116.114, -782.776, 153.073, -769.552, 188.559, -752.768, 222.228, -732.588, 253.757, -709.204, 282.843, -682.843, 309.204, -653.757, 332.588, -622.228, 352.768, -588.559, 369.552, -553.073, 382.776, -516.114, 392.314, -478.036, 398.074, -439.207, 400, -400, 400, 400 )
 script = ExtResource( 1 )
 shape = SubResource( 1 )
 
-[node name="BattleGroundTexture" type="Polygon2D" parent="."]
+[node name="BattleGroundTexture" type="Polygon2D" parent="Textures"]
 rotation = 1.5708
 scale = Vector2( 0.95, 0.95 )
 color = Color( 0.423529, 0.423529, 0.423529, 1 )
@@ -30,3 +36,25 @@ position = Vector2( -531, -1 )
 [node name="Player2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 424, 1 )
 player_id = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="UpperBound" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -408, -461, -396, -382, 421, -382, 431, -456 )
+
+[node name="LowerBound" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -387, 380, 418, 379, 474, 493, -437, 483 )
+
+[node name="LeftBound" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -399, -382, -503, -365, -598, -315, -677, -243, -727, -164, -757, -67, -761, 50, -738, 140, -691, 224, -628, 295, -538, 350, -454, 377, -385, 381, -427, 455, -812, 330, -866, -1, -759, -350, -407, -461 )
+
+[node name="RightBound" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 419, -384, 525, -355, 604, -312, 674, -247, 722, -179, 751, -94, 763, -1, 753, 96, 719, 178, 676, 247, 612, 307, 516, 358, 417, 380, 474, 495, 854, 326, 852, -290, 431, -453 )
