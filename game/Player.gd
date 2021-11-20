@@ -8,11 +8,14 @@ export (PlayerId) var player_id
 const SPEED = 15000
 
 export var INITIAL_HEALTH = 100
+export var COLOR = "blue"
+
 var health = INITIAL_HEALTH
 
 func _ready():
 	_hide_other_player_huds()
 	_update_health_indicators()
+	$WispAnimation.play(COLOR)
 
 func _physics_process(delta):
 	var velocity = Input.get_vector(

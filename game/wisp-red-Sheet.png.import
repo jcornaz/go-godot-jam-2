@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wisp-sheet.png-892709551ce63928e4915fa8ac3d0977.stex"
+path="res://.import/wisp-red-Sheet.png-1a93399f0934f20312610ac85326bc73.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/wisp-sheet.png"
-dest_files=[ "res://.import/wisp-sheet.png-892709551ce63928e4915fa8ac3d0977.stex" ]
+source_file="res://game/wisp-red-Sheet.png"
+dest_files=[ "res://.import/wisp-red-Sheet.png-1a93399f0934f20312610ac85326bc73.stex" ]
 
 [params]
 

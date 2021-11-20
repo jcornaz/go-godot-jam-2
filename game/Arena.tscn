@@ -36,6 +36,7 @@ position = Vector2( -531, -1 )
 [node name="Player2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 448, 1 )
 player_id = 1
+COLOR = "red"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
