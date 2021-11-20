@@ -35,33 +35,14 @@ polygon = PoolVector2Array( 20, 0, 18.4776, 7.65367, 14.1421, 14.1421, 7.65367, 
 script = ExtResource( 1 )
 shape = SubResource( 2 )
 
-[node name="GUI_Player2" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="GUI_Player2"]
-margin_left = 1608.0
-margin_top = 50.0
-margin_right = 1764.0
-margin_bottom = 89.0
-value = 80.0
-percent_visible = false
+[node name="HUD_Player1" type="Control" parent="HUD"]
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="GUI_Player2"]
-margin_left = 1362.0
-margin_top = 35.0
-margin_right = 1582.0
-margin_bottom = 95.0
-custom_fonts/font = SubResource( 3 )
-text = "Player 2"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GUI_Player1" type="CanvasLayer" parent="."]
-
-[node name="ProgressBar" type="ProgressBar" parent="GUI_Player1"]
+[node name="ProgressBar" type="ProgressBar" parent="HUD/HUD_Player1"]
 margin_left = 323.0
 margin_top = 44.0
 margin_right = 479.0
@@ -72,13 +53,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="GUI_Player1"]
+[node name="Label" type="Label" parent="HUD/HUD_Player1"]
 margin_left = 75.0
 margin_top = 29.0
 margin_right = 295.0
 margin_bottom = 89.0
 custom_fonts/font = SubResource( 3 )
 text = "Player 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUD_Player2" type="Control" parent="HUD"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD/HUD_Player2"]
+margin_left = 1608.0
+margin_top = 50.0
+margin_right = 1764.0
+margin_bottom = 89.0
+value = 80.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HUD/HUD_Player2"]
+margin_left = 1362.0
+margin_top = 35.0
+margin_right = 1582.0
+margin_bottom = 95.0
+custom_fonts/font = SubResource( 3 )
+text = "Player 2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
