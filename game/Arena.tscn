@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://lib/ShapePolygon2D.gd" type="Script" id=1]
 [ext_resource path="res://game/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/objects/Wall.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 400.0
@@ -59,3 +60,14 @@ polygon = PoolVector2Array( -399, -382, -503, -365, -598, -315, -677, -243, -727
 
 [node name="RightBound" type="CollisionPolygon2D" parent="ArenaBounds"]
 polygon = PoolVector2Array( 419, -384, 525, -355, 604, -312, 674, -247, 722, -179, 751, -94, 763, -1, 753, 96, 719, 178, 676, 247, 612, 307, 516, 358, 417, 380, 474, 495, 854, 326, 852, -290, 431, -453 )
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Wall" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( -271, -259 )
+
+[node name="Wall2" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( 272, 234 )
+
+[node name="Wall3" parent="Objects" instance=ExtResource( 3 )]
+position = Vector2( -3, -3 )

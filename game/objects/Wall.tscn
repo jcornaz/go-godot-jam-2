@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://lib/ShapePolygon2D.gd" type="Script" id=1]
+[ext_resource path="res://game/objects/wall_rectangle.tres" type="Shape2D" id=2]
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = ExtResource( 2 )
+
+[node name="RingTexture" type="Polygon2D" parent="."]
+color = Color( 0.180392, 0.172549, 0.172549, 1 )
+polygon = PoolVector2Array( -40, -40, 40, -40, 40, 40, -40, 40 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+shape = ExtResource( 2 )
+
+[node name="CoreTexture" type="Polygon2D" parent="."]
+scale = Vector2( 0.9, 0.9 )
+color = Color( 0.258824, 0.25098, 0.25098, 1 )
+polygon = PoolVector2Array( -40, -40, 40, -40, 40, 40, -40, 40 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+shape = ExtResource( 2 )
