@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "ShapePolygon2D",
 "language": "GDScript",
 "path": "res://lib/ShapePolygon2D.gd"
+}, {
+"base": "Node2D",
+"class": "StyleBox2D",
+"language": "GDScript",
+"path": "res://lib/StyleBox2D.gd"
 } ]
 _global_script_class_icons={
-"ShapePolygon2D": ""
+"ShapePolygon2D": "",
+"StyleBox2D": ""
 }
 
 [application]
@@ -164,7 +170,6 @@ primary={
 2d_physics/layer_2="Projectile"
 2d_physics/layer_3="Hurtbox"
 2d_physics/layer_4="Hitbox"
-2d_physics/layer_5="World"
 
 [physics]
 
