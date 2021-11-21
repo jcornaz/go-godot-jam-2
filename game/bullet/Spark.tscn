@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://game/bullet/spark-sheet.png" type="Texture" id=1]
-[ext_resource path="res://Bullet.gd" type="Script" id=2]
+[ext_resource path="res://game/bullet/Bullet.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -40,22 +40,38 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "default",
-"speed": 8.0
+"speed": 12.0
 } ]
 
 [sub_resource type="CircleShape2D" id=10]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id=11]
 radius = 5.0
 
-[node name="Spark" type="Area2D"]
+[node name="Spark" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-modulate = Color( 0.0784314, 0.784314, 1, 1 )
+modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 1, 0 )
 frames = SubResource( 9 )
-frame = 6
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 10 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+modulate = Color( 0.984314, 0.0313726, 0.254902, 1 )
+shape = SubResource( 11 )
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_entered"]

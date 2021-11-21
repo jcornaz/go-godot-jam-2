@@ -9,8 +9,12 @@ const SPEED = 15000
 
 export var INITIAL_HEALTH = 100
 export var COLOR = "blue"
+export var SHOOT_OFFSET = 20
+export var BULLET_SPEED = 600
 
-var health = INITIAL_HEALTH
+var health = INITIAL_HEALTH setget set_health
+
+var Spark = preload("res://game/bullet/Spark.tscn")
 
 func _ready():
 	_hide_other_player_huds()
@@ -24,13 +28,28 @@ func _physics_process(delta):
 		str("move_up_player", player_id + 1), 
 		str("move_down_player", player_id + 1))
 	
-	if (Input.is_action_just_pressed("ui_accept")):
-		hit_by_projectile(null)
-	
 	move_and_slide(velocity * delta * SPEED)
 
-func hit_by_projectile(projectile):
-	health -= 20.0
+func _input(event):
+	if Input.is_action_just_pressed(str("primary_fire_player", player_id + 1)):
+		
+		var direction = Input.get_vector(
+			str("aim_left_player", player_id + 1), 
+			str("aim_right_player", player_id + 1), 
+			str("aim_up_player", player_id + 1), 
+			str("aim_down_player", player_id + 1)
+		).normalized()
+		
+		if direction.length_squared() > 0.0:
+			var spark = Spark.instance()
+			get_parent().add_child(spark)
+			spark.global_position = self.global_position + direction * SHOOT_OFFSET
+			spark.initialize(Color.red, direction * BULLET_SPEED)
+	
+	pass
+
+func set_health(new_health):
+	health = new_health
 	_update_health_indicators()
 
 func _update_health_indicators():
