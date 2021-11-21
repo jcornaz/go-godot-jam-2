@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://lib/ShapePolygon2D.gd" type="Script" id=1]
 [ext_resource path="res://game/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 400.0
 height = 800.0
+
+[sub_resource type="Environment" id=2]
+background_mode = 4
+glow_enabled = true
 
 [node name="Arena" type="Node2D"]
 
@@ -79,3 +83,6 @@ position = Vector2( -531, -1 )
 position = Vector2( 448, 1 )
 player_id = 1
 COLOR = "red"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )

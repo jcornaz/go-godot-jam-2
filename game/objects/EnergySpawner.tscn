@@ -61,8 +61,8 @@ size = Vector2( 60, 60 )
 style_box = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 1.10196, 0, 0, 1 )
 position = Vector2( 1, 0 )
 frames = SubResource( 10 )
-frame = 2
+frame = 6
 playing = true
