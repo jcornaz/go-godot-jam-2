@@ -7,7 +7,7 @@ func initialize(color: Color, velocity: Vector2):
 
 
 func _on_Hitbox_entered(area):
-	area.deal_damage(1)
+	area.deal_damage(100)
 	queue_free()
 
 

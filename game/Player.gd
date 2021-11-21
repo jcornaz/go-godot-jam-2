@@ -10,7 +10,7 @@ const SPEED = 15000
 export var INITIAL_HEALTH = 100
 export var COLOR = "blue"
 export var SHOOT_OFFSET = 20
-export var BULLET_SPEED = 600
+export var BULLET_SPEED = 800
 
 var health = INITIAL_HEALTH setget set_health
 
@@ -22,13 +22,14 @@ func _ready():
 	$WispAnimation.play(COLOR)
 
 func _physics_process(delta):
-	var velocity = Input.get_vector(
+	var direction = Input.get_vector(
 		str("move_left_player", player_id + 1), 
 		str("move_right_player", player_id + 1), 
 		str("move_up_player", player_id + 1), 
-		str("move_down_player", player_id + 1))
+		str("move_down_player", player_id + 1)
+	).normalized()
 	
-	move_and_slide(velocity * delta * SPEED)
+	move_and_slide(direction * delta * SPEED)
 
 func _input(event):
 	if Input.is_action_just_pressed(str("primary_fire_player", player_id + 1)):
