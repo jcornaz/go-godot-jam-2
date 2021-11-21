@@ -9,3 +9,7 @@ func initialize(color: Color, velocity: Vector2):
 func _on_Hitbox_entered(area):
 	area.deal_damage(1)
 	queue_free()
+
+
+func _on_body_entered(body):
+	queue_free()
