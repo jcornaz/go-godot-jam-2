@@ -44,6 +44,8 @@ current = true
 
 [node name="ArenaBounds" type="StaticBody2D" parent="."]
 visible = false
+collision_layer = 16
+collision_mask = 0
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -65,9 +67,15 @@ polygon = PoolVector2Array( 419, -384, 525, -355, 604, -312, 674, -247, 722, -17
 
 [node name="Wall" parent="Objects" instance=ExtResource( 3 )]
 position = Vector2( -271, -259 )
+collision_layer = 16
+collision_mask = 0
 
 [node name="Wall2" parent="Objects" instance=ExtResource( 3 )]
 position = Vector2( 272, 234 )
+collision_layer = 16
+collision_mask = 0
 
 [node name="Wall3" parent="Objects" instance=ExtResource( 3 )]
 position = Vector2( -3, -3 )
+collision_layer = 16
+collision_mask = 0
