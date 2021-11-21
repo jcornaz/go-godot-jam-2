@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://lib/ShapePolygon2D.gd" type="Script" id=1]
 [ext_resource path="res://game/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/objects/Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/objects/EnergySpawner.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 400.0
@@ -30,14 +31,6 @@ color = Color( 0.423529, 0.423529, 0.423529, 1 )
 polygon = PoolVector2Array( 400, 400, 398.074, 439.207, 392.314, 478.036, 382.776, 516.114, 369.552, 553.073, 352.768, 588.559, 332.588, 622.228, 309.204, 653.757, 282.843, 682.843, 253.757, 709.204, 222.228, 732.588, 188.559, 752.768, 153.073, 769.552, 116.114, 782.776, 78.0361, 792.314, 39.2069, 798.074, 2.44921e-14, 800, -39.2069, 798.074, -78.0361, 792.314, -116.114, 782.776, -153.073, 769.552, -188.559, 752.768, -222.228, 732.588, -253.757, 709.204, -282.843, 682.843, -309.204, 653.757, -332.588, 622.228, -352.768, 588.559, -369.552, 553.073, -382.776, 516.114, -392.314, 478.036, -398.074, 439.207, -400, 400, -400, -400, -398.074, -439.207, -392.314, -478.036, -382.776, -516.114, -369.552, -553.073, -352.768, -588.559, -332.588, -622.228, -309.204, -653.757, -282.843, -682.843, -253.757, -709.204, -222.228, -732.588, -188.559, -752.768, -153.073, -769.552, -116.114, -782.776, -78.0361, -792.314, -39.2069, -798.074, -7.34764e-14, -800, 39.2069, -798.074, 78.0361, -792.314, 116.114, -782.776, 153.073, -769.552, 188.559, -752.768, 222.228, -732.588, 253.757, -709.204, 282.843, -682.843, 309.204, -653.757, 332.588, -622.228, 352.768, -588.559, 369.552, -553.073, 382.776, -516.114, 392.314, -478.036, 398.074, -439.207, 400, -400, 400, 400 )
 script = ExtResource( 1 )
 shape = SubResource( 1 )
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -531, -1 )
-
-[node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 448, 1 )
-player_id = 1
-COLOR = "red"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -75,7 +68,14 @@ position = Vector2( 272, 234 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="Wall3" parent="Objects" instance=ExtResource( 3 )]
-position = Vector2( -3, -3 )
-collision_layer = 16
-collision_mask = 0
+[node name="EnergySpawner" parent="Objects" instance=ExtResource( 4 )]
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource( 2 )]
+position = Vector2( -531, -1 )
+
+[node name="Player2" parent="Players" instance=ExtResource( 2 )]
+position = Vector2( 448, 1 )
+player_id = 1
+COLOR = "red"
