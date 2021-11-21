@@ -14,7 +14,7 @@ export var BULLET_SPEED = 800
 
 var health = INITIAL_HEALTH setget set_health
 
-var Spark = preload("res://game/bullet/Spark.tscn")
+export var Spark = preload("res://game/bullet/Spark.tscn")
 
 func _ready():
 	_hide_other_player_huds()
