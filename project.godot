@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "Element",
+"language": "GDScript",
+"path": "res://game/Element.gd"
+}, {
 "base": "Area2D",
 "class": "EnergySpawner",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://lib/StyleBox2D.gd"
 } ]
 _global_script_class_icons={
+"Element": "",
 "EnergySpawner": "",
 "ShapePolygon2D": "",
 "StyleBox2D": ""

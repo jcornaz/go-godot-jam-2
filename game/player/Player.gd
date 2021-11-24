@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal HealthChanged(new_health)
+signal EnergySet(slot, element)
 
 enum PlayerId {
 	Player1, Player2
@@ -26,6 +27,9 @@ var current_primary_cooldown = 0.0
 export var SECONDARY_COOLDOWN = 0.1
 var current_secondary_cooldown = 0.0
 
+var _slot_1: Element = null
+var _slot_2: Element = null
+
 func _ready():
 	$WispAnimation.play(COLOR)
 
@@ -40,7 +44,6 @@ func _physics_process(delta):
 	move_and_slide(direction * delta * SPEED)
 
 func _process(delta):
-	print(current_primary_cooldown)
 	if Input.get_action_strength(str("primary_fire_player", player_id + 1)) and current_primary_cooldown <= 0.0:
 		current_primary_cooldown = PRIMARY_COOLDOWN
 		firePrimary()
@@ -56,9 +59,19 @@ func _process(delta):
 		current_secondary_cooldown -= delta
 
 func _input(event):
-	if _current_spawner and _current_spawner.is_available() and Input.is_action_just_pressed(str("primary_grab_player", player_id + 1)):
-		_current_spawner.take()
-	
+	if _current_spawner:
+		if Input.is_action_just_pressed(str("primary_grab_player", _player_num())):
+			var element: Element = _current_spawner.take()
+			if element:
+				emit_signal("EnergySet", 1, element)
+				
+		if Input.is_action_just_pressed(str("secondary_grab_player", _player_num())):
+			var element: Element = _current_spawner.take()
+			if element:
+				emit_signal("EnergySet", 2, element)
+
+func _player_num():
+	return player_id + 1
 
 func firePrimary():
 	var direction = _get_aim_direction()

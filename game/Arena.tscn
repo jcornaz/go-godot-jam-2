@@ -92,5 +92,7 @@ environment = SubResource( 2 )
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
+[connection signal="EnergySet" from="Players/Player1" to="HUD" method="_on_player_EnergySet" binds= [ 1 ]]
 [connection signal="HealthChanged" from="Players/Player1" to="HUD" method="_on_player_HealthChanged" binds= [ 1 ]]
+[connection signal="EnergySet" from="Players/Player2" to="HUD" method="_on_player_EnergySet" binds= [ 2 ]]
 [connection signal="HealthChanged" from="Players/Player2" to="HUD" method="_on_player_HealthChanged" binds= [ 2 ]]
