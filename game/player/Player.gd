@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal HealthChanged(new_health)
+
 enum PlayerId {
 	Player1, Player2
 }
@@ -25,8 +27,6 @@ export var SECONDARY_COOLDOWN = 0.1
 var current_secondary_cooldown = 0.0
 
 func _ready():
-	_hide_other_player_huds()
-	_update_health_indicators()
 	$WispAnimation.play(COLOR)
 
 func _physics_process(delta):
@@ -88,23 +88,7 @@ func _get_aim_direction() -> Vector2:
 
 func set_health(new_health):
 	health = new_health
-	_update_health_indicators()
-
-func _update_health_indicators():
-	if (player_id == PlayerId.Player1):
-		_update_health_indicator($HUD/HUD_Player1/ProgressBar)
-	if (player_id == PlayerId.Player2):
-		_update_health_indicator($HUD/HUD_Player2/ProgressBar)
-
-func _update_health_indicator(health_indicator: ProgressBar):
-	health_indicator.value = health
-	health_indicator.max_value = INITIAL_HEALTH
-
-func _hide_other_player_huds():
-	if (player_id != PlayerId.Player1):
-		$HUD/HUD_Player1.visible = false
-	if (player_id != PlayerId.Player2):
-		$HUD/HUD_Player2.visible = false
+	emit_signal("HealthChanged", health)
 
 
 func _on_spawner_detected_entered(area):
