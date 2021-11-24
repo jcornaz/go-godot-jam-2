@@ -12,3 +12,6 @@ func _on_player_HealthChanged(health: float, player_num: int):
 
 func _on_player_EnergySet(slot: int, element: Element, player_num: int):
 	print(str("player ", player_num, " grabed ", element, " on slot ", slot))
+	var texture: TextureRect = get_node(str("Player_", player_num, "/Slot", slot))
+	texture.modulate = element.color
+	texture.visible = true

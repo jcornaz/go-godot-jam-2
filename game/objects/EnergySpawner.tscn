@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://lib/StyleBox2D.gd" type="Script" id=1]
-[ext_resource path="res://game/bullet/spark-sheet.png" type="Texture" id=2]
+[ext_resource path="res://game/bullet/spark_animation.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://game/objects/EnergySpawner.gd" type="Script" id=3]
 [ext_resource path="res://game/Element.gd" type="Script" id=4]
 
@@ -12,46 +12,6 @@ damage = 50.0
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 22, 22 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 2 )
-region = Rect2( 80, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 2 )
-region = Rect2( 112, 0, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=10]
-animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "default",
-"speed": 12.0
-} ]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -84,8 +44,8 @@ autostart = true
 [node name="Sprite" type="AnimatedSprite" parent="."]
 modulate = Color( 1.10196, 0, 0, 1 )
 position = Vector2( 1, 0 )
-frames = SubResource( 10 )
-frame = 7
+frames = ExtResource( 2 )
+frame = 6
 playing = true
 
 [node name="Box" type="Node2D" parent="."]
