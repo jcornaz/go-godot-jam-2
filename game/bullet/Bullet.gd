@@ -1,9 +1,8 @@
 extends RigidBody2D
 
 
-func initialize(color: Color, velocity: Vector2):
+func initialize(velocity: Vector2):
 	apply_impulse(Vector2.ZERO, velocity * mass)
-	$AnimatedSprite.modulate = color * 1.5
 
 
 func _on_Hitbox_entered(area):

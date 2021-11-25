@@ -4,7 +4,7 @@ class_name EnergySpawner
 signal IsGrabbed
 
 var _is_available = false
-export(Resource) var element
+export(Resource) var element # type: Element
 
 func _ready():
 	$Sprite.visible = _is_available

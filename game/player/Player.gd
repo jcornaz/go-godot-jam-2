@@ -21,17 +21,20 @@ export var Spark = preload("res://game/bullet/Spark.tscn")
 
 var _current_spawner: EnergySpawner = null
 
-export var PRIMARY_COOLDOWN = 0.1
-var current_primary_cooldown = 0.0
+var _cooldown: Dictionary = { Slot.PRIMARY: 0.0, Slot.SECONDARY: 0.0 } #Dict<Slot, Double>
 
-export var SECONDARY_COOLDOWN = 0.1
-var current_secondary_cooldown = 0.0
+var _element_a: Dictionary = {} #Dict<Slot, Element>
+var _element_b: Dictionary = {} #Dict<Slot, Element>
+var _abilities: Dictionary = {} #Dict<Slot, Ability>
 
-var _slot_1: Element = null
-var _slot_2: Element = null
+enum Slot { PRIMARY, SECONDARY }
 
 func _ready():
 	$WispAnimation.play(COLOR)
+	var slot1 = Slot.PRIMARY
+	_abilities[slot1] = _combine_elements(_element_a.get(slot1), _element_b.get(slot1))
+	var slot2 = Slot.SECONDARY
+	_abilities[slot2] = _combine_elements(_element_a.get(slot2), _element_b.get(slot2))
 
 func _physics_process(delta):
 	var direction = Input.get_vector(
@@ -44,52 +47,63 @@ func _physics_process(delta):
 	move_and_slide(direction * delta * SPEED)
 
 func _process(delta):
-	if Input.get_action_strength(str("primary_fire_player", player_id + 1)) and current_primary_cooldown <= 0.0:
-		current_primary_cooldown = PRIMARY_COOLDOWN
-		firePrimary()
+	if Input.get_action_strength(str("primary_fire_player", player_id + 1)) and _cooldown[Slot.PRIMARY] <= 0.0:
+		fire(Slot.PRIMARY)
 		
-	if Input.get_action_strength(str("secondary_fire_player", player_id + 1)) and current_secondary_cooldown <= 0.0:
-		current_secondary_cooldown = SECONDARY_COOLDOWN
-		fireSecondary()
+	if Input.get_action_strength(str("secondary_fire_player", player_id + 1)) and _cooldown[Slot.SECONDARY] <= 0.0:
+		fire(Slot.SECONDARY)
 	
-	if current_primary_cooldown > 0.0:
-		current_primary_cooldown -= delta
+	if _cooldown[Slot.PRIMARY] > 0.0:
+		_cooldown[Slot.PRIMARY] -= delta
 		
-	if current_secondary_cooldown > 0.0:
-		current_secondary_cooldown -= delta
+	if _cooldown[Slot.SECONDARY] > 0.0:
+		_cooldown[Slot.SECONDARY] -= delta
 
 func _input(event):
 	if _current_spawner:
+		
 		if Input.is_action_just_pressed(str("primary_grab_player", _player_num())):
 			var element: Element = _current_spawner.take()
 			if element:
-				emit_signal("EnergySet", 1, element)
-				
+				_slot_energy(Slot.PRIMARY, element)
+		
 		if Input.is_action_just_pressed(str("secondary_grab_player", _player_num())):
 			var element: Element = _current_spawner.take()
 			if element:
-				emit_signal("EnergySet", 2, element)
+				_slot_energy(Slot.SECONDARY, element)
+
+func _slot_energy(slot: int, element: Element):
+	if (not _element_a.has(slot)):
+		_element_a[slot] = element
+	elif (not _element_b.has(slot)):
+		_element_b[slot] = element
+	_abilities[slot] = _combine_elements(_element_a.get(slot), _element_b.get(slot))
+	emit_signal("EnergySet", slot + 1, _abilities[slot])
+
+const ABILITY_SPARK = preload("res://game/bullet/ability_spark.tres")
+const ABILITY_FIREBALL = preload("res://game/bullet/ability_fireball.tres")
+
+const ELEMENT_FIRE = preload("res://game/bullet/element_fire.tres")
+
+func _combine_elements(element_a: Element, element_b: Element) -> Ability:
+	if (element_a and element_a.name == ELEMENT_FIRE.name):
+		return ABILITY_FIREBALL
+	else: 
+		return ABILITY_SPARK
 
 func _player_num():
 	return player_id + 1
 
-func firePrimary():
+func fire(slot: int):
 	var direction = _get_aim_direction()
 
 	if direction.length_squared() > 0.0:
-		var spark = Spark.instance()
-		get_parent().add_child(spark)
-		spark.global_position = self.global_position + direction * SHOOT_OFFSET
-		spark.initialize(Color.red, direction * BULLET_SPEED)
-
-func fireSecondary():
-	var direction = _get_aim_direction()
-
-	if direction.length_squared() > 0.0:
-		var spark = Spark.instance()
-		get_parent().add_child(spark)
-		spark.global_position = self.global_position + direction * SHOOT_OFFSET
-		spark.initialize(Color.blue, direction * BULLET_SPEED)
+		var ability: Ability = _abilities[slot]
+		_cooldown[slot] = ability.cooldown
+		var bullet = ability.bullet.instance()
+		get_parent().add_child(bullet)
+		bullet.global_position = self.global_position + direction * SHOOT_OFFSET
+		bullet.initialize(direction * BULLET_SPEED)
 
 func _get_aim_direction() -> Vector2:
 	return Input.get_vector(
