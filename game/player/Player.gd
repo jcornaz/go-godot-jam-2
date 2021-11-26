@@ -29,6 +29,17 @@ var _abilities: Dictionary = {} #Dict<Slot, Ability>
 
 enum Slot { PRIMARY, SECONDARY }
 
+func reset_player(pos: Vector2):
+	self.position = pos
+	set_health(INITIAL_HEALTH)
+	_element_a.clear()
+	_element_b.clear()
+	_abilities.clear()
+	var slot1 = Slot.PRIMARY
+	_abilities[slot1] = _combine_elements(_element_a.get(slot1), _element_b.get(slot1))
+	var slot2 = Slot.SECONDARY
+	_abilities[slot2] = _combine_elements(_element_a.get(slot2), _element_b.get(slot2))
+
 func _ready():
 	$WispAnimation.play(COLOR)
 	var slot1 = Slot.PRIMARY

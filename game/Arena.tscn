@@ -101,3 +101,4 @@ environment = SubResource( 2 )
 [connection signal="EnergySet" from="Players/Player2" to="HUD" method="_on_player_EnergySet" binds= [ 2 ]]
 [connection signal="HealthChanged" from="Players/Player2" to="HUD" method="_on_player_HealthChanged" binds= [ 2 ]]
 [connection signal="HealthChanged" from="Players/Player2" to="MainMenu" method="_on_Player_HealthChanged" binds= [ 2 ]]
+[connection signal="game_started" from="MainMenu" to="." method="_on_MainMenu_game_started"]
