@@ -26,6 +26,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Background" type="ColorRect" parent="Menu"]
+margin_right = 1843.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 0.482353 )
+
 [node name="View" type="VBoxContainer" parent="Menu"]
 margin_left = 441.0
 margin_top = 238.0
@@ -40,12 +45,16 @@ margin_right = 960.0
 margin_bottom = 120.0
 custom_fonts/font = SubResource( 1 )
 text = "Elemental Whisps"
+align = 1
+valign = 1
 
 [node name="EndGameMessage" type="Label" parent="Menu/View"]
 margin_top = 200.0
 margin_right = 960.0
 margin_bottom = 320.0
 custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
 
 [node name="ItemList" type="VBoxContainer" parent="Menu/View"]
 margin_top = 400.0

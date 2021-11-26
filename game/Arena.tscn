@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://lib/ShapePolygon2D.gd" type="Script" id=1]
 [ext_resource path="res://game/player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://game/objects/EnergySpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/gui/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/Arena.gd" type="Script" id=6]
+[ext_resource path="res://game/gui/MainMenu.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 400.0
@@ -92,7 +93,11 @@ environment = SubResource( 2 )
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
+[node name="MainMenu" parent="." instance=ExtResource( 7 )]
+
 [connection signal="EnergySet" from="Players/Player1" to="HUD" method="_on_player_EnergySet" binds= [ 1 ]]
 [connection signal="HealthChanged" from="Players/Player1" to="HUD" method="_on_player_HealthChanged" binds= [ 1 ]]
+[connection signal="HealthChanged" from="Players/Player1" to="MainMenu" method="_on_Player_HealthChanged" binds= [ 1 ]]
 [connection signal="EnergySet" from="Players/Player2" to="HUD" method="_on_player_EnergySet" binds= [ 2 ]]
 [connection signal="HealthChanged" from="Players/Player2" to="HUD" method="_on_player_HealthChanged" binds= [ 2 ]]
+[connection signal="HealthChanged" from="Players/Player2" to="MainMenu" method="_on_Player_HealthChanged" binds= [ 2 ]]
