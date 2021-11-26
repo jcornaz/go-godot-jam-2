@@ -40,6 +40,7 @@ func reset_player(pos: Vector2):
 	var slot2 = Slot.SECONDARY
 	_abilities[slot2] = _combine_elements(_element_a.get(slot2), _element_b.get(slot2))
 
+
 func _ready():
 	$WispAnimation.play(COLOR)
 	var slot1 = Slot.PRIMARY
