@@ -25,15 +25,16 @@ func _on_body_entered(body):
 func _on_explode():
 	if exploded == false:
 		exploded = true
-		hide()
 		sleeping = true
 		var explosion = EXPLOSION.instance()
 		get_parent().add_child(explosion)
 		explosion.initialize(self, EXPLOSION_RADIUS)
+		explosion.connect("explosion_peak", self, "_on_explode_peak")
 	
 
 func _on_explode_peak():
 	var hitPlayerHurtBoxes = $ExplosionHitbox.get_overlapping_areas()
+	print(hitPlayerHurtBoxes)
 	for hitPlayerHurtBox in hitPlayerHurtBoxes:
 		hitPlayerHurtBox.deal_damage(100)
 	queue_free()

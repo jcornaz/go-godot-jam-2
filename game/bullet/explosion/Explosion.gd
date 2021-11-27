@@ -9,7 +9,6 @@ func initialize(node: Node2D, radius: float):
 	var scale = radius/BASE_RADIUS
 	self.scale = Vector2(scale, scale)
 	self.global_position = node.global_position
-	connect("explosion_peak", node, "_on_explode_peak")
 	play()
 
 
