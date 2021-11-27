@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/bullet/spark/spark_animation.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://game/bullet/fireball/Fireball.gd" type="Script" id=2]
+[ext_resource path="res://game/bullet/explosion/Explosion.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.0
@@ -10,7 +11,7 @@ radius = 3.0
 radius = 5.0
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 82.0061
+radius = 100.005
 
 [node name="Fireball" type="RigidBody2D" groups=["Bullet"]]
 collision_layer = 2
@@ -20,11 +21,13 @@ contacts_reported = 1
 contact_monitor = true
 can_sleep = false
 script = ExtResource( 2 )
+EXPLOSION = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 modulate = Color( 100, 0, 0, 1 )
 position = Vector2( 1, 0 )
 frames = ExtResource( 1 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -46,6 +49,7 @@ one_shot = true
 autostart = true
 
 [node name="ExplosionHitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 monitorable = false
