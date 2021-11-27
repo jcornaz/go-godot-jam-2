@@ -24,10 +24,9 @@ script = ExtResource( 2 )
 EXPLOSION = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-modulate = Color( 100, 0, 0, 1 )
+modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 1, 0 )
 frames = ExtResource( 1 )
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

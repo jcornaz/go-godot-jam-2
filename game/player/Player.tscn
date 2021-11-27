@@ -44,7 +44,7 @@ script = ExtResource( 3 )
 shape = SubResource( 2 )
 
 [node name="WispAnimation" parent="." instance=ExtResource( 4 )]
-frame = 10
+frame = 11
 
 [node name="Hurtbox" type="Area2D" parent="."]
 visible = false

@@ -15,6 +15,12 @@ height = 800.0
 [sub_resource type="Environment" id=2]
 background_mode = 4
 glow_enabled = true
+glow_blend_mode = 0
+glow_hdr_threshold = 0.4
+glow_hdr_scale = 0.93
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_brightness = 1.33
 
 [node name="Arena" type="Node2D"]
 script = ExtResource( 6 )

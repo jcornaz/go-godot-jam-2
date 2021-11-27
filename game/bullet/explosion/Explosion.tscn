@@ -36,6 +36,7 @@ animations = [ {
 } ]
 
 [node name="Explosion" type="AnimatedSprite"]
+self_modulate = Color( 1.01, 1, 1, 1 )
 frames = SubResource( 7 )
 frame = 2
 speed_scale = 2.0
