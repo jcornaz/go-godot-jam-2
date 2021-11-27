@@ -116,6 +116,7 @@ func fire(slot: int):
 		get_parent().add_child(bullet)
 		bullet.global_position = self.global_position + direction * SHOOT_OFFSET
 		bullet.initialize(direction * BULLET_SPEED)
+		$ShootSound.play()
 
 func _get_aim_direction() -> Vector2:
 	return Input.get_vector(
@@ -126,6 +127,9 @@ func _get_aim_direction() -> Vector2:
 	).normalized()
 
 func set_health(new_health):
+	if new_health < health:
+		$HurtSound.play()
+
 	health = new_health
 	emit_signal("HealthChanged", health)
 
