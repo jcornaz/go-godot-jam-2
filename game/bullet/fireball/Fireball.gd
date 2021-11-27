@@ -2,6 +2,7 @@ extends RigidBody2D
 
 export var EXPLOSION: PackedScene
 export var EXPLOSION_RADIUS: float = 100
+export var DAMAGE: int = 20
 
 var exploded = false
 
@@ -34,7 +35,6 @@ func _on_explode():
 
 func _on_explode_peak():
 	var hitPlayerHurtBoxes = $ExplosionHitbox.get_overlapping_areas()
-	print(hitPlayerHurtBoxes)
 	for hitPlayerHurtBox in hitPlayerHurtBoxes:
-		hitPlayerHurtBox.deal_damage(100)
+		hitPlayerHurtBox.deal_damage(DAMAGE)
 	queue_free()
