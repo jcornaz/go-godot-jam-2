@@ -11,7 +11,7 @@ func _ready():
 
 func initialize(velocity: Vector2):
 	apply_impulse(Vector2.ZERO, velocity * mass)
-
+	$AnimatedSprite.rotation = velocity.angle()
 
 func _on_Hitbox_entered(area):
 	_on_explode()
