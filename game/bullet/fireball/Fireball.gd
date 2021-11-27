@@ -7,6 +7,7 @@ var exploded = false
 
 func _ready():
 	($ExplosionHitbox/CollisionShape2D.shape as CircleShape2D).radius = EXPLOSION_RADIUS
+	$AnimatedSprite.play()
 
 
 func initialize(velocity: Vector2):

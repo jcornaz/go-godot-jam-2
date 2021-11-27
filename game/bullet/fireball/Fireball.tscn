@@ -32,7 +32,6 @@ animations = [ {
 radius = 3.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 11.0
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 100.005
@@ -51,8 +50,7 @@ EXPLOSION = ExtResource( 3 )
 position = Vector2( -16, 0 )
 scale = Vector2( 0.9, 0.9 )
 frames = SubResource( 8 )
-frame = 2
-playing = true
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
