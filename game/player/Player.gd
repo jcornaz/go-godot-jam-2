@@ -17,7 +17,7 @@ export var BULLET_SPEED = 1000
 
 var health = INITIAL_HEALTH setget set_health
 
-export var Spark = preload("res://game/bullet/Spark.tscn")
+export var Spark = preload("res://game/bullet/spark/Spark.tscn")
 
 var _current_spawner: EnergySpawner = null
 
@@ -92,10 +92,10 @@ func _slot_energy(slot: int, element: Element):
 	_abilities[slot] = _combine_elements(_element_a.get(slot), _element_b.get(slot))
 	emit_signal("EnergySet", slot + 1, _abilities[slot])
 
-const ABILITY_SPARK = preload("res://game/bullet/ability_spark.tres")
-const ABILITY_FIREBALL = preload("res://game/bullet/ability_fireball.tres")
+const ABILITY_SPARK = preload("res://game/bullet/resources/ability_spark.tres")
+const ABILITY_FIREBALL = preload("res://game/bullet/resources/ability_fireball.tres")
 
-const ELEMENT_FIRE = preload("res://game/bullet/element_fire.tres")
+const ELEMENT_FIRE = preload("res://game/bullet/resources/element_fire.tres")
 
 func _combine_elements(element_a: Element, element_b: Element) -> Ability:
 	if (element_a and element_a.name == ELEMENT_FIRE.name):

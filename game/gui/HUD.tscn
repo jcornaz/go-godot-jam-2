@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://game/bullet/spark.png" type="Texture" id=1]
+[ext_resource path="res://game/bullet/spark/spark.png" type="Texture" id=1]
 [ext_resource path="res://resources/fonts/Kenney Blocks.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://game/gui/HUD.gd" type="Script" id=3]
 

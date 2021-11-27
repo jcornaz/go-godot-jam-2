@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spark-sheet.png-6286a2bb995dd460b0bbe8fdbb214733.stex"
+path="res://.import/spark-sheet.png-e41d1f4aff506b3abc31d4057d6f1843.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/bullet/spark-sheet.png"
-dest_files=[ "res://.import/spark-sheet.png-6286a2bb995dd460b0bbe8fdbb214733.stex" ]
+source_file="res://game/bullet/spark/spark-sheet.png"
+dest_files=[ "res://.import/spark-sheet.png-e41d1f4aff506b3abc31d4057d6f1843.stex" ]
 
 [params]
 
