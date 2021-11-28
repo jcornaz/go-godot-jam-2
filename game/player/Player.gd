@@ -15,6 +15,7 @@ export var COLOR = "blue"
 export var SHOOT_OFFSET = 40
 
 var health = INITIAL_HEALTH setget set_health
+var slow_effect: Dictionary = {} #Dict<"amount": float, "duration": float>
 
 export var Spark = preload("res://game/bullet/spark/Spark.tscn")
 
@@ -28,6 +29,10 @@ var _abilities: Dictionary = {} #Dict<Slot, Ability>
 
 enum Slot { PRIMARY, SECONDARY }
 
+func _ready():
+	$WispAnimation.play(COLOR)
+	reset_player(position)
+
 func reset_player(pos: Vector2):
 	self.position = pos
 	set_health(INITIAL_HEALTH)
@@ -38,14 +43,8 @@ func reset_player(pos: Vector2):
 	_abilities[slot1] = _combine_elements(_element_a.get(slot1), _element_b.get(slot1))
 	var slot2 = Slot.SECONDARY
 	_abilities[slot2] = _combine_elements(_element_a.get(slot2), _element_b.get(slot2))
+	slow_effect = { "amount": 0.0, "duration": 0.0 }
 
-
-func _ready():
-	$WispAnimation.play(COLOR)
-	var slot1 = Slot.PRIMARY
-	_abilities[slot1] = _combine_elements(_element_a.get(slot1), _element_b.get(slot1))
-	var slot2 = Slot.SECONDARY
-	_abilities[slot2] = _combine_elements(_element_a.get(slot2), _element_b.get(slot2))
 
 func _physics_process(delta):
 	var direction = Input.get_vector(
@@ -55,7 +54,10 @@ func _physics_process(delta):
 		str("move_down_player", player_id + 1)
 	).normalized()
 	
-	move_and_slide(direction * delta * SPEED)
+	var current_speed = SPEED
+	if slow_effect["amount"]  > 0.0:
+		current_speed *= slow_effect["amount"] 
+	move_and_slide(direction * delta * current_speed)
 
 func _process(delta):
 	if Input.get_action_strength(str("primary_fire_player", player_id + 1)) and _cooldown <= 0.0:
@@ -66,6 +68,12 @@ func _process(delta):
 	
 	if _cooldown > 0.0:
 		_cooldown -= delta
+	
+	if slow_effect["amount"] > 0.0:
+		if slow_effect["duration"] > 0.0:
+			slow_effect["duration"] -= delta
+		else:
+			slow_effect["amount"] = 0.0
 
 func _input(event):
 	if _current_spawner:

@@ -8,8 +8,8 @@ func initialize(direction: Vector2):
 
 
 func _on_Hitbox_entered(area):
-	area.deal_damage(5)
-	# apply slow
+	area.deal_damage(2)
+	area.slow(0.6, 1.5)
 	queue_free()
 
 
