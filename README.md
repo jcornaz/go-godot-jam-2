@@ -9,13 +9,13 @@ Go Godot Jam 2 entry
 - [ ] Design the event to give an element
 
 ### Menu
-- [ ] Add a help section in the menu to explain the game and controls
+- [X] Add a help section in the menu to explain the game controls
 
 ### Art
 - [ ] Wave projectile (cold wave)
-- [ ] Fire projectile: red and blue version (fireball, cold explision)
+- [X] Fire projectile: red and blue version (fireball, cold explosion)
 - [ ] Ice spike projectile (ice spike)
-- [ ] Explosion (fireball)
+- [X] Explosion (fireball)
 - [ ] Slot icon for all initial abilities
 
 ### Polish (Optional)
