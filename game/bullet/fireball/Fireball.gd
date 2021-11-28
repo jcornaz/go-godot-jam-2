@@ -2,6 +2,7 @@ extends RigidBody2D
 
 export var EXPLOSION: PackedScene
 export var EXPLOSION_RADIUS: float = 100
+export var EXPLOSION_ANIMATION: String = "fire"
 export var DAMAGE: int = 20
 export var SPEED = 1000
 
@@ -10,6 +11,8 @@ var exploded = false
 func _ready():
 	($ExplosionHitbox/CollisionShape2D.shape as CircleShape2D).radius = EXPLOSION_RADIUS
 	$AnimatedSprite.play()
+	$Particles.process_material.initial_velocity = SPEED * 0.8
+	$Particles.process_material.linear_accel = SPEED * 0.6
 
 func initialize(direction: Vector2):
 	apply_impulse(Vector2.ZERO, direction * SPEED * mass)
@@ -32,7 +35,7 @@ func _on_explode():
 		sleeping = true
 		var explosion = EXPLOSION.instance()
 		get_parent().add_child(explosion)
-		explosion.initialize(self, EXPLOSION_RADIUS)
+		explosion.initialize(self, EXPLOSION_RADIUS, EXPLOSION_ANIMATION)
 		explosion.connect("explosion_peak", self, "_on_explode_peak")
 	
 

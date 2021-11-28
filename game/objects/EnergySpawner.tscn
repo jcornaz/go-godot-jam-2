@@ -33,13 +33,14 @@ visible = false
 shape = SubResource( 11 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 one_shot = true
 autostart = true
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1, 0 )
 frames = ExtResource( 2 )
+frame = 7
 playing = true
 
 [node name="Box" type="Node2D" parent="."]

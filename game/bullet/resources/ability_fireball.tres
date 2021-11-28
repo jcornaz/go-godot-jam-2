@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource( 3 )
-name = "Fireball"
-description = "A fiery ball of doom."
-cooldown = 0.4
+name = "Coldball"
+description = "A fiery ball of cold."
+cooldown = 0.6
 bullet = ExtResource( 2 )
 texture = ExtResource( 1 )

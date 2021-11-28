@@ -5,11 +5,11 @@ signal explosion_peak
 const PEAK_FRAME = 2
 const BASE_RADIUS  = 17.5
 
-func initialize(node: Node2D, radius: float):
+func initialize(node: Node2D, radius: float, animation: String = "fire"):
 	var scale = radius/BASE_RADIUS
 	self.scale = Vector2(scale, scale)
 	self.global_position = node.global_position
-	play()
+	play(animation)
 
 
 func _count_to_the_peak():
