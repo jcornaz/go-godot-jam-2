@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game/gui/MainMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/Arena.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=3]
+
+[node name="Main" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Arena" parent="." instance=ExtResource( 2 )]
+position = Vector2( 932, 542 )
+
+[node name="MainMenu" parent="." instance=ExtResource( 1 )]
+
+[connection signal="game_started" from="MainMenu" to="." method="_on_game_started"]

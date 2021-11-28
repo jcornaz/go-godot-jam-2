@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal HealthChanged(new_health)
 signal EnergySet(slot, element)
+signal Dead
 
 enum PlayerId {
 	Player1, Player2
@@ -31,14 +32,6 @@ enum Slot { PRIMARY, SECONDARY }
 
 func _ready():
 	$WispAnimation.play(COLOR)
-	reset_player(position)
-
-func reset_player(pos: Vector2):
-	self.position = pos
-	set_health(INITIAL_HEALTH)
-	_element_a.clear()
-	_element_b.clear()
-	_abilities.clear()
 	var slot1 = Slot.PRIMARY
 	_abilities[slot1] = _combine_elements(_element_a.get(slot1), _element_b.get(slot1))
 	var slot2 = Slot.SECONDARY
@@ -141,6 +134,8 @@ func set_health(new_health):
 	
 	health = new_health
 	emit_signal("HealthChanged", health)
+	if health <= 0:
+		emit_signal("Dead")
 
 
 func _on_spawner_detected_entered(area):

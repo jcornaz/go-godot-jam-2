@@ -15,10 +15,3 @@ func _on_player_EnergySet(slot: int, ability: Ability, player_num: int):
 	var texture: TextureRect = get_node(str("Player_", player_num, "/Slot", slot))
 	texture.texture = ability.texture
 	texture.visible = true
-
-
-func reset():
-	$Player_1/Slot1.visible = false
-	$Player_1/Slot2.visible = false
-	$Player_2/Slot1.visible = false
-	$Player_2/Slot2.visible = false
