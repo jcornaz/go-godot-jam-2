@@ -126,7 +126,8 @@ func _get_aim_direction() -> Vector2:
 func set_health(new_health):
 	if new_health < health:
 		$HurtSound.play()
-
+		$AnimationPlayer.play("Hurt")
+	
 	health = new_health
 	emit_signal("HealthChanged", health)
 
