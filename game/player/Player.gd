@@ -98,7 +98,8 @@ const ELEMENT_FIRE = preload("res://game/bullet/resources/element_fire.tres")
 const ELEMENT_COLD = preload("res://game/bullet/resources/element_cold.tres")
 
 func _combine_elements(element_a: Element, element_b: Element) -> Ability:
-	if  element_a == ELEMENT_COLD and element_b == ELEMENT_COLD:
+	var elements = [element_a, element_b]
+	if  ELEMENT_COLD in elements and ELEMENT_FIRE in elements:
 		print('elements combined to coldball')
 		return ABILITY_COLDBALL
 	elif not element_b and element_a == ELEMENT_COLD:
