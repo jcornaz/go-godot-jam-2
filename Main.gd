@@ -5,6 +5,10 @@ var Arena = preload("res://game/Arena.tscn")
 
 onready var _current_arena = $Arena
 
+func _ready():
+	$Tween.interpolate_property($Soundtrack, "volume_db", -50, -5, 5)
+	$Tween.start()
+	
 func _on_game_started():
 	_current_arena.queue_free()
 	_current_arena = Arena.instance()
