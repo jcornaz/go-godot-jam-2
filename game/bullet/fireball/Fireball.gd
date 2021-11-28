@@ -26,6 +26,9 @@ func _on_body_entered(body):
 func _on_explode():
 	if exploded == false:
 		exploded = true
+		if $Particles:
+			$Particles.queue_free()
+			
 		sleeping = true
 		var explosion = EXPLOSION.instance()
 		get_parent().add_child(explosion)
