@@ -3,6 +3,7 @@ extends RigidBody2D
 export var EXPLOSION: PackedScene
 export var EXPLOSION_RADIUS: float = 100
 export var DAMAGE: int = 20
+export var SPEED = 1000
 
 var exploded = false
 
@@ -10,10 +11,9 @@ func _ready():
 	($ExplosionHitbox/CollisionShape2D.shape as CircleShape2D).radius = EXPLOSION_RADIUS
 	$AnimatedSprite.play()
 
-
-func initialize(velocity: Vector2):
-	apply_impulse(Vector2.ZERO, velocity * mass)
-	rotation = velocity.angle()
+func initialize(direction: Vector2):
+	apply_impulse(Vector2.ZERO, direction * SPEED * mass)
+	rotation = direction.angle()
 
 func _on_Hitbox_entered(area):
 	_on_explode()

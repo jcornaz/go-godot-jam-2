@@ -38,10 +38,8 @@ one_shot = true
 autostart = true
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-modulate = Color( 1.10196, 0, 0, 1 )
 position = Vector2( 1, 0 )
 frames = ExtResource( 2 )
-frame = 4
 playing = true
 
 [node name="Box" type="Node2D" parent="."]

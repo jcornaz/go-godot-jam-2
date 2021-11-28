@@ -13,7 +13,6 @@ const SPEED = 20000
 export var INITIAL_HEALTH = 100
 export var COLOR = "blue"
 export var SHOOT_OFFSET = 40
-export var BULLET_SPEED = 1000
 
 var health = INITIAL_HEALTH setget set_health
 
@@ -91,11 +90,15 @@ func _slot_energy(slot: int, element: Element):
 
 const ABILITY_SPARK = preload("res://game/bullet/resources/ability_spark.tres")
 const ABILITY_FIREBALL = preload("res://game/bullet/resources/ability_fireball.tres")
+const ABILITY_ICEWAVE = preload("res://game/bullet/resources/ability_icewave.tres")
 
 const ELEMENT_FIRE = preload("res://game/bullet/resources/element_fire.tres")
+const ELEMENT_COLD = preload("res://game/bullet/resources/element_cold.tres")
 
 func _combine_elements(element_a: Element, element_b: Element) -> Ability:
-	if (element_a and element_a.name == ELEMENT_FIRE.name):
+	if (element_a and element_a.name == ELEMENT_COLD.name):
+		return ABILITY_ICEWAVE
+	elif (element_a and element_a.name == ELEMENT_FIRE.name):
 		return ABILITY_FIREBALL
 	else: 
 		return ABILITY_SPARK
@@ -112,7 +115,7 @@ func fire(slot: int):
 		var bullet = ability.bullet.instance()
 		get_parent().add_child(bullet)
 		bullet.global_position = self.global_position + direction * SHOOT_OFFSET
-		bullet.initialize(direction * BULLET_SPEED)
+		bullet.initialize(direction)
 		$ShootSound.play()
 
 func _get_aim_direction() -> Vector2:
