@@ -1,8 +1,11 @@
 extends RigidBody2D
 
 
-func initialize(velocity: Vector2):
-	apply_impulse(Vector2.ZERO, velocity * mass)
+export var SPEED = 1000
+
+func initialize(direction: Vector2):
+	apply_impulse(Vector2.ZERO, direction * SPEED * mass)
+	rotation = direction.angle()
 
 
 func _on_Hitbox_entered(area):

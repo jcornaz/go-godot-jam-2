@@ -13,7 +13,6 @@ const SPEED = 20000
 export var INITIAL_HEALTH = 100
 export var COLOR = "blue"
 export var SHOOT_OFFSET = 40
-export var BULLET_SPEED = 1000
 
 var health = INITIAL_HEALTH setget set_health
 
@@ -116,7 +115,7 @@ func fire(slot: int):
 		var bullet = ability.bullet.instance()
 		get_parent().add_child(bullet)
 		bullet.global_position = self.global_position + direction * SHOOT_OFFSET
-		bullet.initialize(direction * BULLET_SPEED)
+		bullet.initialize(direction)
 		$ShootSound.play()
 
 func _get_aim_direction() -> Vector2:
