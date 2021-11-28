@@ -7,6 +7,7 @@ var _is_available = false
 export(Resource) var element # type: Element
 
 func _ready():
+	$Sprite.modulate = element.color 
 	$Sprite.visible = _is_available
 
 func is_available():

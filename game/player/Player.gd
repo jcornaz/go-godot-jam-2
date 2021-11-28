@@ -91,11 +91,15 @@ func _slot_energy(slot: int, element: Element):
 
 const ABILITY_SPARK = preload("res://game/bullet/resources/ability_spark.tres")
 const ABILITY_FIREBALL = preload("res://game/bullet/resources/ability_fireball.tres")
+const ABILITY_ICEWAVE = preload("res://game/bullet/resources/ability_icewave.tres")
 
 const ELEMENT_FIRE = preload("res://game/bullet/resources/element_fire.tres")
+const ELEMENT_COLD = preload("res://game/bullet/resources/element_cold.tres")
 
 func _combine_elements(element_a: Element, element_b: Element) -> Ability:
-	if (element_a and element_a.name == ELEMENT_FIRE.name):
+	if (element_a and element_a.name == ELEMENT_COLD.name):
+		return ABILITY_ICEWAVE
+	elif (element_a and element_a.name == ELEMENT_FIRE.name):
 		return ABILITY_FIREBALL
 	else: 
 		return ABILITY_SPARK
