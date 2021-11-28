@@ -16,6 +16,7 @@ func take():
 	if not _is_available:
 		return null
 
+	$PickupSound.play()
 	_is_available = false
 	$Sprite.visible = false
 	$Timer.start()

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://game/player/hurt.wav" type="AudioStream" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://lib/ShapePolygon2D.gd" type="Script" id=3]
 [ext_resource path="res://game/player/WispAnimation.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/player/PlayerHurtbox.gd" type="Script" id=5]
+[ext_resource path="res://game/player/shoot.wav" type="AudioStream" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.025
@@ -64,6 +66,12 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnerDetector"]
 shape = SubResource( 5 )
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="area_entered" from="SpawnerDetector" to="." method="_on_spawner_detected_entered"]
 [connection signal="area_exited" from="SpawnerDetector" to="." method="_on_SpawnerDetector_area_exited"]
