@@ -21,7 +21,7 @@ export var Spark = preload("res://game/bullet/spark/Spark.tscn")
 
 var _current_spawner: EnergySpawner = null
 
-var _cooldown: Dictionary = { Slot.PRIMARY: 0.0, Slot.SECONDARY: 0.0 } #Dict<Slot, Double>
+var _cooldown := 0.0
 
 var _element_a: Dictionary = {} #Dict<Slot, Element>
 var _element_b: Dictionary = {} #Dict<Slot, Element>
@@ -59,17 +59,14 @@ func _physics_process(delta):
 	move_and_slide(direction * delta * SPEED)
 
 func _process(delta):
-	if Input.get_action_strength(str("primary_fire_player", player_id + 1)) and _cooldown[Slot.PRIMARY] <= 0.0:
+	if Input.get_action_strength(str("primary_fire_player", player_id + 1)) and _cooldown <= 0.0:
 		fire(Slot.PRIMARY)
 		
-	if Input.get_action_strength(str("secondary_fire_player", player_id + 1)) and _cooldown[Slot.SECONDARY] <= 0.0:
+	if Input.get_action_strength(str("secondary_fire_player", player_id + 1)) and _cooldown <= 0.0:
 		fire(Slot.SECONDARY)
 	
-	if _cooldown[Slot.PRIMARY] > 0.0:
-		_cooldown[Slot.PRIMARY] -= delta
-		
-	if _cooldown[Slot.SECONDARY] > 0.0:
-		_cooldown[Slot.SECONDARY] -= delta
+	if _cooldown > 0.0:
+		_cooldown -= delta
 
 func _input(event):
 	if _current_spawner:
@@ -111,7 +108,7 @@ func fire(slot: int):
 
 	if direction.length_squared() > 0.0:
 		var ability: Ability = _abilities[slot]
-		_cooldown[slot] = ability.cooldown
+		_cooldown = ability.cooldown
 		var bullet = ability.bullet.instance()
 		get_parent().add_child(bullet)
 		bullet.global_position = self.global_position + direction * SHOOT_OFFSET
