@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/player/hurt.wav" type="AudioStream" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
@@ -56,6 +56,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [ false ]
 }
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 1
+emission_sphere_radius = 21.33
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 45.94
+gravity = Vector3( 0, -200, 0 )
+initial_velocity = 28.48
+initial_velocity_random = 0.2
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 69.11
+scale = 4.0
+scale_random = 0.8
+color = Color( 0.117647, 0.835294, 0.168627, 1 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 1, 1 )
@@ -117,6 +133,13 @@ stream = ExtResource( 6 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Hurt = SubResource( 8 )
 anims/RESET = SubResource( 9 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+z_index = 200
+emitting = false
+amount = 30
+one_shot = true
+process_material = SubResource( 10 )
 
 [connection signal="area_entered" from="SpawnerDetector" to="." method="_on_spawner_detected_entered"]
 [connection signal="area_exited" from="SpawnerDetector" to="." method="_on_SpawnerDetector_area_exited"]
