@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://lib/StyleBox2D.gd" type="Script" id=1]
+[ext_resource path="res://game/environment/icy_ground/Icy Ground.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 101.0
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.168627, 0.682353, 0.713726, 0.521569 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.0627451, 0.701961, 0.776471, 1 )
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[node name="Icy Ground" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Area" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+monitorable = false
+
+[node name="CircleShape" type="CollisionShape2D" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="CircleTexture" type="Node2D" parent="."]
+script = ExtResource( 1 )
+size = Vector2( 200, 200 )
+style_box = SubResource( 2 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_ice_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_ice_exited"]
