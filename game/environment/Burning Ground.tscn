@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/environment/ground/Ground Effect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/environment/Burning Ground.gd" type="Script" id=2]
+
+[node name="Burning Ground" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Ground Effect" parent="." instance=ExtResource( 1 )]
+color = Color( 0.847059, 0.14902, 0.0352941, 1 )
+
+[connection signal="on_ground_entered" from="Ground Effect" to="." method="_on_fire_entered"]
+[connection signal="on_ground_exited" from="Ground Effect" to="." method="_on_fire_exited"]
