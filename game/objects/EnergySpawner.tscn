@@ -40,8 +40,6 @@ autostart = true
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1, 0 )
 frames = ExtResource( 2 )
-frame = 7
-playing = true
 
 [node name="Box" type="Node2D" parent="."]
 script = ExtResource( 1 )

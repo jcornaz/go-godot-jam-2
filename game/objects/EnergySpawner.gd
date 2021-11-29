@@ -9,6 +9,7 @@ export(Resource) var element # type: Element
 func _ready():
 	$Sprite.modulate = element.color 
 	$Sprite.visible = _is_available
+	$Sprite.play()
 
 func is_available():
 	return _is_available
