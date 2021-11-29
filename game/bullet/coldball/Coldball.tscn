@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/bullet/fireball/Fireball.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/bullet/coldball/coldball-sheet.png" type="Texture" id=2]
 [ext_resource path="res://game/bullet/coldball/cold-explosion.png" type="Texture" id=3]
+[ext_resource path="res://game/bullet/explosion/ExplosionWithSpike.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -29,6 +30,7 @@ animations = [ {
 } ]
 
 [node name="Coldball" instance=ExtResource( 1 )]
+EXPLOSION = ExtResource( 4 )
 EXPLOSION_RADIUS = 80.0
 EXPLOSION_ANIMATION = "cold"
 DAMAGE = 15
