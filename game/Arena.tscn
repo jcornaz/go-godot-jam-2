@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://lib/ShapePolygon2D.gd" type="Script" id=1]
 [ext_resource path="res://game/player/Player.tscn" type="PackedScene" id=2]
@@ -94,7 +94,7 @@ position = Vector2( 148, 234 )
 
 [node name="EnergySpawner2" parent="Objects" instance=ExtResource( 4 )]
 position = Vector2( -133, -259 )
-element = ExtResource( 8 )
+element = ExtResource( 9 )
 
 [node name="Event" parent="Objects" instance=ExtResource( 7 )]
 
