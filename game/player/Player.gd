@@ -18,6 +18,7 @@ export var SHOOT_OFFSET = 40
 
 var health = INITIAL_HEALTH setget set_health
 var slow_effect: Dictionary = {} #Dict<"amount": float, "duration": float>
+var burn_effect: Dictionary = {} #Dict<"amount": float, "duration": float>
 var is_sliding: bool = false
 
 export var Spark = preload("res://game/bullet/spark/Spark.tscn")
@@ -39,9 +40,9 @@ func _ready():
 	var slot2 = Slot.SECONDARY
 	_abilities[slot2] = _combine_elements(_element_a.get(slot2), _element_b.get(slot2))
 	slow_effect = { "amount": 0.0, "duration": 0.0 }
+	burn_effect = { "amount": 0.0, "duration": 0.0 }
 	is_sliding = false
 
-var sliding_direction = null
 func _physics_process(delta):
 	var input_direction = Input.get_vector(
 		str("move_left_player", player_id + 1), 
@@ -53,13 +54,7 @@ func _physics_process(delta):
 	var current_speed = SPEED
 	if slow_effect["amount"]  > 0.0:
 		current_speed *= slow_effect["amount"] 
-	var direction = input_direction * delta * current_speed
-	if is_sliding:
-		if sliding_direction == null:
-			sliding_direction = direction
-		else:
-			direction = direction*0.02 + sliding_direction*0.98
-			sliding_direction = direction
+	var direction = _slide(input_direction * delta * current_speed)
 	move_and_slide(direction)
 
 func _process(delta):
@@ -77,8 +72,15 @@ func _process(delta):
 			slow_effect["duration"] -= delta
 		else:
 			slow_effect["amount"] = 0.0
+	
+	if burn_effect["amount"] > 0.0:
+		if burn_effect["duration"] > 0.0:
+			set_health(health - (burn_effect["amount"] * delta))
+			burn_effect["duration"] -= delta
+		else:
+			burn_effect["amount"] = 0.0
 
-func _input(event):	
+func _input(event):
 	if _current_spawner:
 		if Input.is_action_just_pressed(str("primary_grab_player", _player_num())):
 			var element: Element = _current_spawner.take()
@@ -89,6 +91,18 @@ func _input(event):
 			var element: Element = _current_spawner.take()
 			if element:
 				_slot_energy(Slot.SECONDARY, element)
+
+var sliding_direction = null
+func _slide(direction: Vector2) -> Vector2:
+	if is_sliding:
+		if sliding_direction == null:
+			sliding_direction = direction
+		else:
+			var slided_direction = direction * 0.02 + sliding_direction * 0.98
+			sliding_direction = slided_direction
+			return slided_direction
+	return direction
+
 
 func _slot_energy(slot: int, element: Element):
 	if (not _element_a.has(slot)):

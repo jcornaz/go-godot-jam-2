@@ -1,9 +1,16 @@
 extends Node2D
 
+var burning_players: Array = [] # Array<Player>
+
+func _process(delta):
+	for player in burning_players:
+		player.burn_effect = { "amount": 5.0, "duration": 4.0 }
+
 
 func _on_fire_entered(body: Player):
-	body.health -= 20
+	burning_players.append(body)
 
 
 func _on_fire_exited(body: Player):
-	body.health -= 30
+	var index = burning_players.find(body)
+	burning_players.remove(index)
