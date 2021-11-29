@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/environment/ground/Ground Effect.gd" type="Script" id=1]
+[ext_resource path="res://lib/StyleBox2D.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 101.0
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0352941, 0.772549, 0.847059, 0.5 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.0352941, 0.772549, 0.847059, 1 )
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[node name="Ground Effect" type="Node2D"]
+script = ExtResource( 1 )
+color = Color( 0.0352941, 0.772549, 0.847059, 1 )
+size = 200
+
+[node name="Area" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+monitorable = false
+
+[node name="CircleShape" type="CollisionShape2D" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="CircleTexture" type="Node2D" parent="."]
+script = ExtResource( 2 )
+size = Vector2( 200, 200 )
+style_box = SubResource( 2 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_ground_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_ground_exited"]
