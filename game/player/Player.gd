@@ -1,4 +1,5 @@
-extends KinematicBody2D
+extends KinematicBody2D 
+class_name Player
 
 signal HealthChanged(new_health)
 signal EnergySet(slot, element)
@@ -17,6 +18,7 @@ export var SHOOT_OFFSET = 40
 
 var health = INITIAL_HEALTH setget set_health
 var slow_effect: Dictionary = {} #Dict<"amount": float, "duration": float>
+var is_sliding: bool = false
 
 export var Spark = preload("res://game/bullet/spark/Spark.tscn")
 
@@ -37,10 +39,11 @@ func _ready():
 	var slot2 = Slot.SECONDARY
 	_abilities[slot2] = _combine_elements(_element_a.get(slot2), _element_b.get(slot2))
 	slow_effect = { "amount": 0.0, "duration": 0.0 }
+	is_sliding = false
 
-
+var sliding_direction = null
 func _physics_process(delta):
-	var direction = Input.get_vector(
+	var input_direction = Input.get_vector(
 		str("move_left_player", player_id + 1), 
 		str("move_right_player", player_id + 1), 
 		str("move_up_player", player_id + 1), 
@@ -50,7 +53,14 @@ func _physics_process(delta):
 	var current_speed = SPEED
 	if slow_effect["amount"]  > 0.0:
 		current_speed *= slow_effect["amount"] 
-	move_and_slide(direction * delta * current_speed)
+	var direction = input_direction * delta * current_speed
+	if is_sliding:
+		if sliding_direction == null:
+			sliding_direction = direction
+		else:
+			direction = direction*0.02 + sliding_direction*0.98
+			sliding_direction = direction
+	move_and_slide(direction)
 
 func _process(delta):
 	if Input.get_action_strength(str("primary_fire_player", player_id + 1)) and _cooldown <= 0.0:
@@ -68,9 +78,8 @@ func _process(delta):
 		else:
 			slow_effect["amount"] = 0.0
 
-func _input(event):
+func _input(event):	
 	if _current_spawner:
-		
 		if Input.is_action_just_pressed(str("primary_grab_player", _player_num())):
 			var element: Element = _current_spawner.take()
 			if element:

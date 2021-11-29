@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/objects/EnergySpawner.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://game/player/Player.gd"
+}, {
 "base": "Polygon2D",
 "class": "ShapePolygon2D",
 "language": "GDScript",
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "Ability": "",
 "Element": "",
 "EnergySpawner": "",
+"Player": "",
 "ShapePolygon2D": "",
 "StyleBox2D": ""
 }
