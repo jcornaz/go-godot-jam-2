@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://game/player/hurt.wav" type="AudioStream" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://game/player/PlayerHurtbox.gd" type="Script" id=5]
 [ext_resource path="res://game/player/shoot.wav" type="AudioStream" id=6]
 [ext_resource path="res://materials/maskable.gdshader" type="Shader" id=7]
+[ext_resource path="res://game/player/healing_particles_process_material.tres" type="Material" id=8]
+[ext_resource path="res://game/player/healing-particle.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.025
@@ -117,6 +119,14 @@ stream = ExtResource( 6 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Hurt = SubResource( 8 )
 anims/RESET = SubResource( 9 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+z_index = 200
+emitting = false
+amount = 30
+one_shot = true
+process_material = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [connection signal="area_entered" from="SpawnerDetector" to="." method="_on_spawner_detected_entered"]
 [connection signal="area_exited" from="SpawnerDetector" to="." method="_on_SpawnerDetector_area_exited"]

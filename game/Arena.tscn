@@ -7,8 +7,9 @@
 [ext_resource path="res://game/gui/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/Arena.gd" type="Script" id=6]
 [ext_resource path="res://game/environment/Frozen Ground.tscn" type="PackedScene" id=7]
-[ext_resource path="res://game/bullet/resources/element_cold.tres" type="Resource" id=8]
-[ext_resource path="res://game/environment/Burning Ground.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/environment/Burning Ground.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/event/Event.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/bullet/resources/element_cold.tres" type="Resource" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 400.0
@@ -76,10 +77,10 @@ polygon = PoolVector2Array( 419, -384, 525, -355, 604, -312, 674, -247, 722, -17
 
 [node name="Environment" type="Node2D" parent="Objects"]
 
-[node name="Icy Ground" parent="Objects/Environment" instance=ExtResource( 7 )]
+[node name="Frozen Ground" parent="Objects/Environment" instance=ExtResource( 7 )]
 position = Vector2( 260, -260 )
 
-[node name="Burning Ground" parent="Objects/Environment" instance=ExtResource( 9 )]
+[node name="Burning Ground" parent="Objects/Environment" instance=ExtResource( 8 )]
 position = Vector2( -260, 260 )
 
 [node name="Wall" parent="Objects" instance=ExtResource( 3 )]
@@ -93,11 +94,13 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="EnergySpawner" parent="Objects" instance=ExtResource( 4 )]
-position = Vector2( 0, 150 )
+position = Vector2( 148, 234 )
 
 [node name="EnergySpawner2" parent="Objects" instance=ExtResource( 4 )]
-position = Vector2( 0, -150 )
-element = ExtResource( 8 )
+position = Vector2( -133, -259 )
+element = ExtResource( 10 )
+
+[node name="Event" parent="Objects" instance=ExtResource( 9 )]
 
 [node name="Players" type="Node2D" parent="."]
 
@@ -114,9 +117,21 @@ environment = SubResource( 2 )
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
+[node name="EventTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="count_down" from="Objects/Event" to="HUD" method="_on_Event_count_down"]
+[connection signal="event_ended" from="Objects/Event" to="HUD" method="_on_Event_event_ended"]
+[connection signal="event_started" from="Objects/Event" to="HUD" method="_on_Event_event_started"]
+[connection signal="heal_player" from="Objects/Event" to="Players/Player1" method="_on_Event_heal_player"]
+[connection signal="heal_player" from="Objects/Event" to="Players/Player2" method="_on_Event_heal_player"]
+[connection signal="player_scores" from="Objects/Event" to="HUD" method="_on_Event_player_scores"]
 [connection signal="Dead" from="Players/Player1" to="." method="_on_Player_Dead" binds= [ 1 ]]
 [connection signal="EnergySet" from="Players/Player1" to="HUD" method="_on_player_EnergySet" binds= [ 1 ]]
 [connection signal="HealthChanged" from="Players/Player1" to="HUD" method="_on_player_HealthChanged" binds= [ 1 ]]
 [connection signal="Dead" from="Players/Player2" to="." method="_on_Player_Dead" binds= [ 2 ]]
 [connection signal="EnergySet" from="Players/Player2" to="HUD" method="_on_player_EnergySet" binds= [ 2 ]]
 [connection signal="HealthChanged" from="Players/Player2" to="HUD" method="_on_player_HealthChanged" binds= [ 2 ]]
+[connection signal="timeout" from="EventTimer" to="." method="_on_EventTimer_timeout"]

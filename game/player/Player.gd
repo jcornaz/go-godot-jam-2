@@ -177,3 +177,13 @@ func _on_spawner_detected_entered(area):
 func _on_SpawnerDetector_area_exited(area):
 	if area == _current_spawner:
 		_current_spawner = null
+
+
+func _on_Event_heal_player(choosen_player):
+	if (choosen_player == player_id):
+		$Particles2D.emitting = true
+		var heal_amount = health + INITIAL_HEALTH * 0.5
+		if (heal_amount > INITIAL_HEALTH):
+			set_health(INITIAL_HEALTH)
+		else:
+			set_health(heal_amount)
