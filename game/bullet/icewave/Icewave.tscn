@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/bullet/icewave/Icewave.gd" type="Script" id=1]
 [ext_resource path="res://game/bullet/icewave/ice-wave.png" type="Texture" id=2]
-[ext_resource path="res://game/bullet/icewave/ice-wave-particle.png" type="Texture" id=3]
+[ext_resource path="res://game/bullet/icewave/ice_flake.png" type="Texture" id=3]
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.125926, 0.97037 )
