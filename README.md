@@ -4,14 +4,14 @@ Go Godot Jam 2 entry
 ## Road to 1.0:
 
 ### Gameplay
-- [ ] Add an ability for each element combination and hook them up in the player.
+- [x] Add an ability for each element combination and hook them up in the player.
   - [x] No element
   - [x] Fire
   - [x] Cold
-  - [ ] Fire + Fire
+  - [x] Fire + Fir
   - [x] Fire + Cold
   - [x] Cold + Cold
-- [ ] Let the spawner periodically spawn a random element
+- [x] Let the spawner periodically spawn a random element
 - [x] Design the event
 
 ### Menu
@@ -22,7 +22,7 @@ Go Godot Jam 2 entry
 - [X] Fire projectile: red and blue version (fireball, cold explosion)
 - [x] Ice spike projectile (ice spike)
 - [X] Explosion (fireball)
-- [ ] Slot icon for all initial abilities
+- [x] Slot icon for all initial abilities
 
 ### Polish (Optional)
 - [ ] Spawn particles on bullet impact
