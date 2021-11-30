@@ -32,8 +32,6 @@ func initialize():
 	emit_signal("event_started")
 	$Area2D/CollisionShape2D.scale = event_scale
 	$Area2D/ShapePolygon2D.scale = event_scale
-	$Area2D/ShapePolygon2D.color = Color.white
-	$Area2D/ShapePolygon2D.color.a = 0.5
 	$Area2D/ShapePolygon2D.visible = true
 
 
