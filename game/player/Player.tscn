@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://game/player/hurt.wav" type="AudioStream" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://materials/maskable.gdshader" type="Shader" id=7]
 [ext_resource path="res://game/player/healing_particles_process_material.tres" type="Material" id=8]
 [ext_resource path="res://game/player/healing-particle.png" type="Texture" id=9]
+[ext_resource path="res://game/bullet/explosion/explosion.png" type="Texture" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.025
@@ -58,6 +59,32 @@ tracks/0/keys = {
 "update": 0,
 "values": [ false ]
 }
+
+[sub_resource type="CanvasItemMaterial" id=10]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticlesMaterial" id=11]
+lifetime_randomness = 0.33
+emission_shape = 1
+emission_sphere_radius = 17.48
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 40.0
+gravity = Vector3( 0, -50, 0 )
+initial_velocity = 60.0
+initial_velocity_random = 1.0
+angular_velocity = 20.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.01
+scale_random = 0.5
+hue_variation = 0.1
+hue_variation_random = 0.1
+anim_speed = 1.0
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 1, 1 )
@@ -120,13 +147,29 @@ stream = ExtResource( 6 )
 anims/Hurt = SubResource( 8 )
 anims/RESET = SubResource( 9 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="Heal" type="Particles2D" parent="Effects"]
 z_index = 200
 emitting = false
 amount = 30
 one_shot = true
+local_coords = false
 process_material = ExtResource( 8 )
 texture = ExtResource( 9 )
+
+[node name="Burn" type="Particles2D" parent="Effects"]
+material = SubResource( 10 )
+z_index = 200
+emitting = false
+amount = 12
+lifetime = 1.5
+explosiveness = 0.3
+randomness = 0.25
+local_coords = false
+draw_order = 1
+process_material = SubResource( 11 )
+texture = ExtResource( 10 )
 
 [connection signal="area_entered" from="SpawnerDetector" to="." method="_on_spawner_detected_entered"]
 [connection signal="area_exited" from="SpawnerDetector" to="." method="_on_SpawnerDetector_area_exited"]

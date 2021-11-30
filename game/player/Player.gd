@@ -75,10 +75,12 @@ func _process(delta):
 	
 	if burn_effect["amount"] > 0.0:
 		if burn_effect["duration"] > 0.0:
+			$Effects/Burn.emitting = true
 			set_health(health - (burn_effect["amount"] * delta), false)
 			burn_effect["duration"] -= delta
 		else:
 			burn_effect["amount"] = 0.0
+			$Effects/Burn.emitting = false
 
 func _input(event):
 	if _current_spawner:
@@ -187,7 +189,7 @@ func _on_SpawnerDetector_area_exited(area):
 
 func _on_Event_heal_player(choosen_player):
 	if (choosen_player == player_id):
-		$Particles2D.emitting = true
+		$Effects/Heal.emitting = true
 		var heal_amount = health + INITIAL_HEALTH * 0.5
 		if (heal_amount > INITIAL_HEALTH):
 			set_health(INITIAL_HEALTH)
