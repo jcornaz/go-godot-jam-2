@@ -96,22 +96,22 @@ scale = Vector2( 0.7, 0.7 )
 [node name="Walls" type="Node2D" parent="Objects"]
 
 [node name="Wall" parent="Objects/Walls" instance=ExtResource( 3 )]
-position = Vector2( -260, -260 )
+position = Vector2( -360, -260 )
 collision_layer = 16
 collision_mask = 0
 
 [node name="Wall2" parent="Objects/Walls" instance=ExtResource( 3 )]
-position = Vector2( 260, 260 )
+position = Vector2( 360, 260 )
 collision_layer = 16
 collision_mask = 0
 
 [node name="Wall3" parent="Objects/Walls" instance=ExtResource( 3 )]
-position = Vector2( 260, -260 )
+position = Vector2( 360, -260 )
 collision_layer = 16
 collision_mask = 0
 
 [node name="Wall4" parent="Objects/Walls" instance=ExtResource( 3 )]
-position = Vector2( -260, 260 )
+position = Vector2( -360, 260 )
 collision_layer = 16
 collision_mask = 0
 
