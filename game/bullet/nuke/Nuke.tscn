@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/bullet/fireball/Fireball.tscn" type="PackedScene" id=1]
+
+[node name="Nuke" instance=ExtResource( 1 )]
+EXPLOSION_RADIUS = 200.0
+DAMAGE = 40
+SPEED = 800

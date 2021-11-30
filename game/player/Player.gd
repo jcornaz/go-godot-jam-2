@@ -119,6 +119,7 @@ const ABILITY_FIREBALL = preload("res://game/bullet/resources/ability_fireball.t
 const ABILITY_ICEWAVE = preload("res://game/bullet/resources/ability_icewave.tres")
 const ABILITY_COLDBALL = preload("res://game/bullet/resources/ability_coldball.tres")
 const ABILITY_ICE_SPIKE = preload("res://game/bullet/resources/ability_ice_spike.tres")
+const ABILITY_NUKE = preload("res://game/bullet/resources/ability_nuke.tres")
 
 const ELEMENT_FIRE = preload("res://game/bullet/resources/element_fire.tres")
 const ELEMENT_COLD = preload("res://game/bullet/resources/element_cold.tres")
@@ -126,19 +127,16 @@ const ELEMENT_COLD = preload("res://game/bullet/resources/element_cold.tres")
 func _combine_elements(element_a: Element, element_b: Element) -> Ability:
 	var elements = [element_a, element_b]
 	if element_a == ELEMENT_COLD and element_b == ELEMENT_COLD:
-		print('elements combined to ice spike')
 		return ABILITY_ICE_SPIKE
+	if element_a == ELEMENT_FIRE and element_b == ELEMENT_FIRE:
+		return ABILITY_NUKE
 	elif ELEMENT_COLD in elements and ELEMENT_FIRE in elements:
-		print('elements combined to coldball')
 		return ABILITY_COLDBALL
 	elif not element_b and element_a == ELEMENT_COLD:
-		print('elements combined to icewave')
 		return ABILITY_ICEWAVE
 	elif not element_b and element_a == ELEMENT_FIRE:
-		print('elements combined to fireball')
 		return ABILITY_FIREBALL
 	else: 
-		print('elements combined to spark')
 		return ABILITY_SPARK
 
 func _player_num():
