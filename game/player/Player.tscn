@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://game/player/hurt.wav" type="AudioStream" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://game/player/healing-particle.png" type="Texture" id=9]
 [ext_resource path="res://game/bullet/explosion/explosion.png" type="Texture" id=10]
 [ext_resource path="res://game/player/Effects.gd" type="Script" id=11]
+[ext_resource path="res://game/bullet/icewave/ice_flake.png" type="Texture" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.025
@@ -86,6 +87,28 @@ scale_random = 0.5
 hue_variation = 0.1
 hue_variation_random = 0.1
 anim_speed = 1.0
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 0.0966258 ), 0.0, 0.0, 0, 0, Vector2( 0.234982, 0.661043 ), 0.0, 0.0, 0, 0, Vector2( 0.528269, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.885159, 0.592025 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.113497 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+lifetime_randomness = 0.26
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+angular_velocity = 80.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 16.23
+scale = 0.5
+scale_random = 0.5
+scale_curve = SubResource( 13 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 1, 1 )
@@ -173,6 +196,14 @@ local_coords = false
 draw_order = 1
 process_material = SubResource( 11 )
 texture = ExtResource( 10 )
+
+[node name="IceSliding" type="Particles2D" parent="Effects"]
+z_index = 200
+emitting = false
+amount = 30
+local_coords = false
+process_material = SubResource( 14 )
+texture = ExtResource( 12 )
 
 [connection signal="area_entered" from="SpawnerDetector" to="." method="_on_spawner_detected_entered"]
 [connection signal="area_exited" from="SpawnerDetector" to="." method="_on_SpawnerDetector_area_exited"]

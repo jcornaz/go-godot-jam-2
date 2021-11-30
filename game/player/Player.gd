@@ -97,12 +97,15 @@ func _input(event):
 var sliding_direction = null
 func _slide(direction: Vector2) -> Vector2:
 	if is_sliding:
+		$Effects/IceSliding.emitting = true
 		if sliding_direction == null:
 			sliding_direction = direction
 		else:
 			var slided_direction = direction * 0.02 + sliding_direction * 0.98
 			sliding_direction = slided_direction
 			return slided_direction
+	else:
+		$Effects/IceSliding.emitting = false
 	return direction
 
 
