@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/bullet/fireball/Fireball.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/bullet/napalm/ScorchingFireball.gd" type="Script" id=2]
+
+[node name="Scorching Fireball" type="Node2D" groups=["Bullet"]]
+script = ExtResource( 2 )
+
+[node name="Fireball" parent="." instance=ExtResource( 1 )]
+
+[connection signal="on_explode_peak" from="Fireball" to="." method="_on_explode_peak"]
