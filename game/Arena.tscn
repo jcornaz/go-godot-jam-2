@@ -77,27 +77,51 @@ polygon = PoolVector2Array( 419, -384, 525, -355, 604, -312, 674, -247, 722, -17
 
 [node name="Environment" type="Node2D" parent="Objects"]
 
-[node name="Frozen Ground" parent="Objects/Environment" instance=ExtResource( 7 )]
-position = Vector2( 260, -260 )
+[node name="Frozen Ground 1" parent="Objects/Environment" instance=ExtResource( 7 )]
+position = Vector2( 0, -200 )
+scale = Vector2( 0.7, 0.7 )
 
-[node name="Burning Ground" parent="Objects/Environment" instance=ExtResource( 8 )]
-position = Vector2( -260, 260 )
+[node name="Frozen Ground 2" parent="Objects/Environment" instance=ExtResource( 7 )]
+position = Vector2( 0, 200 )
+scale = Vector2( 0.7, 0.7 )
 
-[node name="Wall" parent="Objects" instance=ExtResource( 3 )]
+[node name="Burning Ground 1" parent="Objects/Environment" instance=ExtResource( 8 )]
+position = Vector2( -200, 0 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Burning Ground 2" parent="Objects/Environment" instance=ExtResource( 8 )]
+position = Vector2( 200, 0 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Walls" type="Node2D" parent="Objects"]
+
+[node name="Wall" parent="Objects/Walls" instance=ExtResource( 3 )]
 position = Vector2( -260, -260 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="Wall2" parent="Objects" instance=ExtResource( 3 )]
+[node name="Wall2" parent="Objects/Walls" instance=ExtResource( 3 )]
 position = Vector2( 260, 260 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="EnergySpawner" parent="Objects" instance=ExtResource( 4 )]
-position = Vector2( 148, 234 )
+[node name="Wall3" parent="Objects/Walls" instance=ExtResource( 3 )]
+position = Vector2( 260, -260 )
+collision_layer = 16
+collision_mask = 0
 
-[node name="EnergySpawner2" parent="Objects" instance=ExtResource( 4 )]
-position = Vector2( -133, -259 )
+[node name="Wall4" parent="Objects/Walls" instance=ExtResource( 3 )]
+position = Vector2( -260, 260 )
+collision_layer = 16
+collision_mask = 0
+
+[node name="Spawners" type="Node2D" parent="Objects"]
+
+[node name="Fire Spawner" parent="Objects/Spawners" instance=ExtResource( 4 )]
+position = Vector2( 0, 325 )
+
+[node name="Ice Spawner" parent="Objects/Spawners" instance=ExtResource( 4 )]
+position = Vector2( 0, -325 )
 element = ExtResource( 10 )
 
 [node name="Event" parent="Objects" instance=ExtResource( 9 )]
