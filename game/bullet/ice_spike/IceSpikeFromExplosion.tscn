@@ -3,7 +3,7 @@
 [ext_resource path="res://game/bullet/ice_spike/IceSpike.tscn" type="PackedScene" id=1]
 
 [node name="IceSpikeFromExplosion" instance=ExtResource( 1 )]
-DAMAGE = 7
+DAMAGE = 4
 SPEED = 600
 
 [node name="Timer" type="Timer" parent="." index="4"]

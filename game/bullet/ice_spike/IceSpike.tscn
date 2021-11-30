@@ -39,6 +39,7 @@ continuous_cd = 1
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )
+DAMAGE = 15
 
 [node name="Particles2D" type="Particles2D" parent="."]
 amount = 15

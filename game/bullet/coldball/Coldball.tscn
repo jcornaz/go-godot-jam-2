@@ -31,9 +31,9 @@ animations = [ {
 
 [node name="Coldball" instance=ExtResource( 1 )]
 EXPLOSION = ExtResource( 4 )
-EXPLOSION_RADIUS = 80.0
+EXPLOSION_RADIUS = 70.0
 EXPLOSION_ANIMATION = "cold"
-DAMAGE = 15
+DAMAGE = 8
 SPEED = 600
 
 [node name="Particles" parent="." index="0"]

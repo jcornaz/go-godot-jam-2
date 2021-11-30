@@ -4,5 +4,8 @@
 
 [node name="Nuke" instance=ExtResource( 1 )]
 EXPLOSION_RADIUS = 200.0
-DAMAGE = 40
-SPEED = 800
+DAMAGE = 20
+SPEED = 600
+
+[node name="Timer" parent="." index="4"]
+wait_time = 1.0

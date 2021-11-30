@@ -29,4 +29,5 @@ Go Godot Jam 2 entry
 - [ ] Spawn damage number when damage is received
 
 ### Bugs
+- [ ] A direct hit from coldball will hit all icicles
 

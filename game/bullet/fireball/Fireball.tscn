@@ -53,6 +53,7 @@ contact_monitor = true
 can_sleep = false
 script = ExtResource( 2 )
 EXPLOSION = ExtResource( 3 )
+DAMAGE = 10
 
 [node name="Particles" type="Particles2D" parent="."]
 material = SubResource( 9 )

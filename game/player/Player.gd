@@ -166,6 +166,8 @@ func set_health(new_health: float, display: bool = true):
 	if display and new_health < health:
 		display_damage_taken()
 	
+	print("Reduce health")
+	print(new_health)
 	health = new_health
 	emit_signal("HealthChanged", health)
 	if health <= 0:
