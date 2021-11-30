@@ -44,9 +44,9 @@ __meta__ = {
 
 [node name="Slot1" type="TextureRect" parent="Player_1"]
 visible = false
-margin_left = 126.0
+margin_left = 166.0
 margin_top = 91.0
-margin_right = 162.0
+margin_right = 202.0
 margin_bottom = 127.0
 rect_pivot_offset = Vector2( -206, -84 )
 texture = ExtResource( 1 )
@@ -57,9 +57,9 @@ __meta__ = {
 
 [node name="Slot2" type="TextureRect" parent="Player_1"]
 visible = false
-margin_left = 166.0
+margin_left = 126.0
 margin_top = 91.0
-margin_right = 202.0
+margin_right = 162.0
 margin_bottom = 127.0
 rect_pivot_offset = Vector2( -206, -84 )
 texture = ExtResource( 1 )
@@ -152,10 +152,10 @@ __meta__ = {
 
 [node name="Slot1" type="TextureRect" parent="Player_2"]
 visible = false
-margin_left = -400.0
-margin_top = 91.0
-margin_right = -364.0
-margin_bottom = 127.0
+margin_left = -360.0
+margin_top = 92.0
+margin_right = -324.0
+margin_bottom = 128.0
 rect_pivot_offset = Vector2( -206, -84 )
 texture = ExtResource( 1 )
 stretch_mode = 1
@@ -165,10 +165,10 @@ __meta__ = {
 
 [node name="Slot2" type="TextureRect" parent="Player_2"]
 visible = false
-margin_left = -360.0
-margin_top = 91.0
-margin_right = -324.0
-margin_bottom = 127.0
+margin_left = -402.0
+margin_top = 92.0
+margin_right = -366.0
+margin_bottom = 128.0
 rect_pivot_offset = Vector2( -206, -84 )
 texture = ExtResource( 1 )
 stretch_mode = 1
