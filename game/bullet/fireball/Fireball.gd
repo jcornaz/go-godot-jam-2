@@ -12,7 +12,7 @@ func _ready():
 	($ExplosionHitbox/CollisionShape2D.shape as CircleShape2D).radius = EXPLOSION_RADIUS
 	$AnimatedSprite.play()
 	$Particles.process_material.initial_velocity = SPEED * 0.8
-	$Particles.process_material.linear_accel = SPEED * 0.6
+	$Particles.process_material.linear_accel = SPEED * 0.3
 
 func initialize(direction: Vector2):
 	apply_impulse(Vector2.ZERO, direction * SPEED * mass)
