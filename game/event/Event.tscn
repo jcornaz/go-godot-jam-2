@@ -15,6 +15,7 @@ collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 scale = Vector2( 10, 10 )
 shape = SubResource( 1 )
 

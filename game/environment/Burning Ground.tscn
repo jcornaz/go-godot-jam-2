@@ -7,7 +7,7 @@
 script = ExtResource( 2 )
 
 [node name="Ground Effect" parent="." instance=ExtResource( 1 )]
-color = Color( 0.847059, 0.14902, 0.0352941, 1 )
+color = Color( 0.592157, 0.184314, 0.117647, 1 )
 
 [connection signal="on_ground_entered" from="Ground Effect" to="." method="_on_fire_entered"]
 [connection signal="on_ground_exited" from="Ground Effect" to="." method="_on_fire_exited"]

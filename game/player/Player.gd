@@ -75,10 +75,12 @@ func _process(delta):
 	
 	if burn_effect["amount"] > 0.0:
 		if burn_effect["duration"] > 0.0:
-			set_health(health - (burn_effect["amount"] * delta))
+			$Effects/Burn.emitting = true
+			set_health(health - (burn_effect["amount"] * delta), false)
 			burn_effect["duration"] -= delta
 		else:
 			burn_effect["amount"] = 0.0
+			$Effects/Burn.emitting = false
 
 func _input(event):
 	if _current_spawner:
@@ -162,16 +164,18 @@ func _get_aim_direction() -> Vector2:
 		str("aim_down_player", player_id + 1)
 	).normalized()
 
-func set_health(new_health):
-	if new_health < health:
-		$HurtSound.play()
-		$AnimationPlayer.play("Hurt")
+func set_health(new_health: float, display: bool = true):
+	if display and new_health < health:
+		display_damage_taken()
 	
 	health = new_health
 	emit_signal("HealthChanged", health)
 	if health <= 0:
 		emit_signal("Dead")
 
+func display_damage_taken():
+	$HurtSound.play()
+	$AnimationPlayer.play("Hurt")
 
 func _on_spawner_detected_entered(area):
 	if area is EnergySpawner:
@@ -185,7 +189,7 @@ func _on_SpawnerDetector_area_exited(area):
 
 func _on_Event_heal_player(choosen_player):
 	if (choosen_player == player_id):
-		$Particles2D.emitting = true
+		$Effects/Heal.emitting = true
 		var heal_amount = health + INITIAL_HEALTH * 0.5
 		if (heal_amount > INITIAL_HEALTH):
 			set_health(INITIAL_HEALTH)
