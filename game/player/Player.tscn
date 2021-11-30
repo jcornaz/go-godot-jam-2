@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://game/player/hurt.wav" type="AudioStream" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://game/player/healing_particles_process_material.tres" type="Material" id=8]
 [ext_resource path="res://game/player/healing-particle.png" type="Texture" id=9]
 [ext_resource path="res://game/bullet/explosion/explosion.png" type="Texture" id=10]
+[ext_resource path="res://game/player/Effects.gd" type="Script" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.025
@@ -148,6 +149,8 @@ anims/Hurt = SubResource( 8 )
 anims/RESET = SubResource( 9 )
 
 [node name="Effects" type="Node2D" parent="."]
+visible = false
+script = ExtResource( 11 )
 
 [node name="Heal" type="Particles2D" parent="Effects"]
 z_index = 200

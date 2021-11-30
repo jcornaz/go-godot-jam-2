@@ -16,8 +16,8 @@ func set_color(value: Color):
 	var circle_texture = $CircleTexture
 	if circle_texture:
 		var box := (circle_texture.style_box as StyleBoxFlat)
-		box.border_color = color
-		box.bg_color = Color(color.r, color.g, color.b, color.a / 2)
+		box.bg_color = color
+		box.border_color = Color(color.r, color.g, color.b, color.a / 2)
 
 func set_size(value: int):
 	size = value
