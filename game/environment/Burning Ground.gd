@@ -2,7 +2,6 @@ extends Node2D
 
 var burning_players: Array = [] # Array<Player>
 
-
 func _process(delta):
 	for player in burning_players:
 		(player as Player).burn_effect = { "amount": 5.0, "duration": 4.0 }
