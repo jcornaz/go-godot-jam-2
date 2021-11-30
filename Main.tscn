@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game/gui/MainMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/Arena.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://game/soundtrack.wav" type="AudioStream" id=4]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 0
+glow_hdr_threshold = 0.4
+glow_hdr_scale = 0.93
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_brightness = 1.33
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
@@ -21,5 +31,8 @@ autoplay = true
 
 [node name="Tween" type="Tween" parent="."]
 pause_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
 
 [connection signal="game_started" from="MainMenu" to="." method="_on_game_started"]
