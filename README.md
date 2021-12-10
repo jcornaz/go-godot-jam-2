@@ -1,28 +1,15 @@
 # Elemental Wisp Arena
 Go Godot Jam 2 entry
 
-## Road to 1.0:
+## To-Do:
 
 ### Gameplay
-- [x] Add an ability for each element combination and hook them up in the player.
-  - [x] No element
-  - [x] Fire
-  - [x] Cold
-  - [x] Fire + Fir
-  - [x] Fire + Cold
-  - [x] Cold + Cold
-- [x] Let the spawner periodically spawn a random element
-- [x] Design the event
-
-### Menu
-- [X] Add a help section in the menu to explain the game controls
-
-### Art
-- [x] Wave projectile (cold wave)
-- [X] Fire projectile: red and blue version (fireball, cold explosion)
-- [x] Ice spike projectile (ice spike)
-- [X] Explosion (fireball)
-- [x] Slot icon for all initial abilities
+- [ ] 4 Player Game Mode
+  - [x] Create Arena
+  - [x] Enable Split Screen
+  - [ ] Enable HUD
+  - [ ] Polish
+- [ ] Rebalance gameplay to be less spamy
 
 ### Polish (Optional)
 - [ ] Spawn particles on bullet impact
