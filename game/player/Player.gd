@@ -6,7 +6,7 @@ signal EnergySet(slot, element)
 signal Dead
 
 enum PlayerId {
-	Player1, Player2
+	Player1, Player2, Player3, Player4
 }
 
 export (PlayerId) var player_id
@@ -15,6 +15,7 @@ const SPEED = 20000
 export var INITIAL_HEALTH = 100
 export var COLOR = "blue"
 export var SHOOT_OFFSET = 40
+export var IS_INDEPENDENT: bool = false setget _set_is_independent
 
 var health = INITIAL_HEALTH setget set_health
 var slow_effect: Dictionary = {} #Dict<"amount": float, "duration": float>
@@ -146,7 +147,7 @@ func _player_num():
 	return player_id + 1
 
 func fire(slot: int):
-	var direction = _get_aim_direction()
+	var direction = get_aim_direction()
 
 	if direction.length_squared() > 0.0:
 		var ability: Ability = _abilities[slot]
@@ -157,7 +158,7 @@ func fire(slot: int):
 		bullet.initialize(direction)
 		$ShootSound.play()
 
-func _get_aim_direction() -> Vector2:
+func get_aim_direction() -> Vector2:
 	return Input.get_vector(
 		str("aim_left_player", player_id + 1), 
 		str("aim_right_player", player_id + 1), 
@@ -169,8 +170,6 @@ func set_health(new_health: float, display: bool = true):
 	if display and new_health < health:
 		display_damage_taken()
 	
-	print("Reduce health")
-	print(new_health)
 	health = new_health
 	emit_signal("HealthChanged", health)
 	if health <= 0:
@@ -198,3 +197,6 @@ func _on_Event_heal_player(choosen_player):
 			set_health(INITIAL_HEALTH)
 		else:
 			set_health(heal_amount)
+
+func _set_is_independent(value):
+	IS_INDEPENDENT = value

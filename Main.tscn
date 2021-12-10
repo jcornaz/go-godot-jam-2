@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game/gui/MainMenu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/Arena.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/arena/Arena4.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://game/soundtrack.wav" type="AudioStream" id=4]
 
@@ -17,9 +17,7 @@ adjustment_brightness = 1.33
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
-
-[node name="Arena" parent="." instance=ExtResource( 2 )]
-position = Vector2( 932, 542 )
+Arena = ExtResource( 2 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
 
@@ -27,7 +25,6 @@ position = Vector2( 932, 542 )
 pause_mode = 2
 stream = ExtResource( 4 )
 volume_db = -50.0
-autoplay = true
 
 [node name="Tween" type="Tween" parent="."]
 pause_mode = 2
