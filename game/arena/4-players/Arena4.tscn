@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://game/arena/Arena4.gd" type="Script" id=1]
+[ext_resource path="res://game/arena/4-players/Arena4.gd" type="Script" id=1]
 [ext_resource path="res://lib/StyleBox2D.gd" type="Script" id=2]
 [ext_resource path="res://game/bullet/resources/element_cold.tres" type="Resource" id=3]
-[ext_resource path="res://game/objects/Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/objects/EnergySpawner.tscn" type="PackedScene" id=5]
-[ext_resource path="res://game/player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/objects/Wall.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.423529, 0.423529, 0.423529, 1 )
@@ -66,62 +66,62 @@ shape = SubResource( 5 )
 [node name="Walls" type="Node2D" parent="Objects"]
 position = Vector2( 1, 0 )
 
-[node name="RightBottom1" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="RightBottom1" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( 300, 300 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="RightBottom2" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="RightBottom2" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( 200, 300 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="RightBottom3" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="RightBottom3" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( 300, 200 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="LeftBottom1" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="LeftBottom1" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( -300, 300 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="LeftBottom2" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="LeftBottom2" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( -300, 200 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="LeftBottom3" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="LeftBottom3" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( -200, 300 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="LeftTop1" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="LeftTop1" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( -300, -300 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="LeftTop2" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="LeftTop2" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( -200, -300 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="LeftTop3" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="LeftTop3" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( -300, -200 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="RightTop1" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="RightTop1" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( 300, -300 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="RightTop2" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="RightTop2" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( 200, -300 )
 collision_layer = 16
 collision_mask = 0
 
-[node name="RightTop3" parent="Objects/Walls" instance=ExtResource( 4 )]
+[node name="RightTop3" parent="Objects/Walls" instance=ExtResource( 6 )]
 position = Vector2( 300, -200 )
 collision_layer = 16
 collision_mask = 0
@@ -144,17 +144,17 @@ position = Vector2( -600, -600 )
 
 [node name="Players" type="Node2D" parent="."]
 
-[node name="Player1" parent="Players" instance=ExtResource( 6 )]
+[node name="Player1" parent="Players" instance=ExtResource( 4 )]
 position = Vector2( -600, 0 )
 
-[node name="Player2" parent="Players" instance=ExtResource( 6 )]
+[node name="Player2" parent="Players" instance=ExtResource( 4 )]
 position = Vector2( 600, 0 )
 player_id = 1
 
-[node name="Player3" parent="Players" instance=ExtResource( 6 )]
+[node name="Player3" parent="Players" instance=ExtResource( 4 )]
 position = Vector2( 0, -600 )
 player_id = 2
 
-[node name="Player4" parent="Players" instance=ExtResource( 6 )]
+[node name="Player4" parent="Players" instance=ExtResource( 4 )]
 position = Vector2( 0, 600 )
 player_id = 3
