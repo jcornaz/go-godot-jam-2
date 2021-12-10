@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game/arena/4-players/Splitscreen.gd" type="Script" id=1]
+[ext_resource path="res://game/arena/4-players/PlayerViewportContainer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/arena/4-players/Arena4.tscn" type="PackedScene" id=3]
+
+[node name="Splitscreen" type="CanvasLayer"]
+script = ExtResource( 1 )
+WORLD = ExtResource( 3 )
+
+[node name="Border Color" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1834.0
+margin_bottom = 1070.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container 1" parent="MarginContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 909.0
+margin_bottom = 527.0
+
+[node name="Container 2" parent="MarginContainer/GridContainer" instance=ExtResource( 2 )]
+margin_top = 0.0
+margin_bottom = 527.0
+
+[node name="Container 3" parent="MarginContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_right = 909.0
+
+[node name="Container 4" parent="MarginContainer/GridContainer" instance=ExtResource( 2 )]

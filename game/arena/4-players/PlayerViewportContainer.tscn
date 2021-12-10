@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/arena/4-players/TargetingCamera.gd" type="Script" id=1]
+
+[node name="Viewport Container" type="ViewportContainer"]
+margin_left = 914.0
+margin_top = 532.0
+margin_right = 1823.0
+margin_bottom = 1059.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 907, 525 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera2D" parent="Viewport"]
+current = true
+smoothing_enabled = true
+smoothing_speed = 3.0
+script = ExtResource( 1 )
