@@ -3,7 +3,7 @@ extends CanvasLayer
 
 
 onready var progress_bar = get_node("Player Anchor/Health Bar")
-var slots = {0: $"Player Anchor/Slot 1", 1: $"Player Anchor/Slot 2"}
+onready var slots = {1: $"Player Anchor/Slot 1", 2: $"Player Anchor/Slot 2"}
 
 enum PlayerId { # duplicated from Player script
 	Player1, Player2, Player3, Player4
