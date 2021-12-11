@@ -158,3 +158,8 @@ player_id = 2
 [node name="Player4" parent="Players" instance=ExtResource( 4 )]
 position = Vector2( 0, 600 )
 player_id = 3
+
+[connection signal="Dead" from="Players/Player1" to="." method="_on_Player_Dead" binds= [ 0 ]]
+[connection signal="Dead" from="Players/Player2" to="." method="_on_Player_Dead" binds= [ 1 ]]
+[connection signal="Dead" from="Players/Player3" to="." method="_on_Player_Dead" binds= [ 2 ]]
+[connection signal="Dead" from="Players/Player4" to="." method="_on_Player_Dead" binds= [ 3 ]]
