@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://game/arena/4-players/Arena4.gd" type="Script" id=1]
 [ext_resource path="res://lib/StyleBox2D.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://game/player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/objects/EnergySpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/objects/Wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/event/Event.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.423529, 0.423529, 0.423529, 1 )
@@ -159,7 +160,15 @@ player_id = 2
 position = Vector2( 0, 600 )
 player_id = 3
 
+[node name="Event" parent="." instance=ExtResource( 7 )]
+
+[node name="Start Timer" type="Timer" parent="Event"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
 [connection signal="Dead" from="Players/Player1" to="." method="_on_Player_Dead" binds= [ 1 ]]
 [connection signal="Dead" from="Players/Player2" to="." method="_on_Player_Dead" binds= [ 2 ]]
 [connection signal="Dead" from="Players/Player3" to="." method="_on_Player_Dead" binds= [ 3 ]]
 [connection signal="Dead" from="Players/Player4" to="." method="_on_Player_Dead" binds= [ 4 ]]
+[connection signal="timeout" from="Event/Start Timer" to="Event" method="initialize"]

@@ -1,4 +1,5 @@
 extends Node2D
+class_name Event
 
 
 export var TIMER_MAX = 15
@@ -12,7 +13,7 @@ var timer_started = false
 signal event_started
 signal event_ended
 signal count_down
-signal player_scores
+signal player_scores(player_scores)
 signal heal_player(player_id)
 
 
@@ -29,7 +30,7 @@ func get_max_time():
 
 
 func initialize():
-	emit_signal("event_started")
+	start_event()
 	$Area2D/CollisionShape2D.scale = event_scale
 	$Area2D/ShapePolygon2D.scale = event_scale
 	$Area2D/ShapePolygon2D.visible = true
@@ -90,7 +91,11 @@ func _on_Area2D_body_exited(body):
 	if (current_players.empty()):
 		$Timer.set_paused(true)
 
+func start_event():
+	GlobalBus.register_event(self)
+	emit_signal("event_started")
 
 func end_event():
 	emit_signal("event_ended")
+	GlobalBus.unregister_event(self)
 	self.queue_free()

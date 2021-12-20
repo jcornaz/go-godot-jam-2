@@ -43,6 +43,14 @@ func _ready():
 	slow_effect = { "amount": 0.0, "duration": 0.0 }
 	burn_effect = { "amount": 0.0, "duration": 0.0 }
 	is_sliding = false
+	GlobalBus.connect("event_registered", self, "_register_event")
+	GlobalBus.connect("event_unregistered", self, "_unregister_event")
+
+func _register_event(event: Event):
+	event.connect("heal_player", self, "_on_Event_heal_player")
+
+func _unregister_event(event: Event):
+	event.disconnect("heal_player", self, "_on_Event_heal_player")
 
 func _physics_process(delta):
 	var input_direction = Input.get_vector(
