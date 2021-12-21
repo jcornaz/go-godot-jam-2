@@ -48,7 +48,7 @@ color = Color( 0.0117647, 0.168627, 0.00784314, 1 )
 [sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("..:modulate")
+tracks/0/path = NodePath("StyleBox2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -64,21 +64,21 @@ tracks/0/keys = {
 resource_name = "fade_in"
 length = 3.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("..:modulate")
+tracks/0/path = NodePath("StyleBox2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 2.82843, 1 ),
+"times": PoolRealArray( -0.1, 0, 3 ),
+"transitions": PoolRealArray( 1, 3, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Event" type="Node2D"]
-modulate = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
+TIMER_MAX = 15
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2( 10, 10 )
@@ -92,6 +92,7 @@ shape = SubResource( 1 )
 [node name="Texture" type="Node2D" parent="."]
 
 [node name="StyleBox2D" type="Node2D" parent="Texture"]
+modulate = Color( 1, 1, 1, 0 )
 script = ExtResource( 4 )
 size = Vector2( 200, 200 )
 style_box = SubResource( 3 )

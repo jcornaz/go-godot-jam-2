@@ -3,7 +3,7 @@ extends Node2D
 class_name Event
 
 
-export var TIMER_MAX = 15
+export var TIMER_MAX = 10
 export var event_scale = Vector2(1, 1) setget _set_event_scale
 
 var current_players = {}
