@@ -1,9 +1,10 @@
+tool
 extends Node2D
 class_name Event
 
 
 export var TIMER_MAX = 15
-export var event_scale = Vector2(10, 10)
+export var event_scale = Vector2(1, 1) setget _set_event_scale
 
 var current_players = {}
 var player_scores: Dictionary = {}
@@ -16,32 +17,49 @@ signal count_down
 signal player_scores(player_scores)
 signal heal_player(player_id)
 
+onready var style_box = $Texture/StyleBox2D
+onready var collision_box = $Area2D/CollisionShape2D
+onready var particles = $Texture/Particles2D
+onready var timer = $Timer
+
+func _ready():
+	visible = false
+	particles.emitting = false
+	
 
 func _process(delta):
-	emit_signal("count_down", $Timer.time_left)
-	emit_signal("player_scores", player_scores)
-	if (!$Timer.is_stopped() && !$Timer.paused):
-		handle_event_area(delta)
-		handle_players(delta)
+	if not Engine.editor_hint:
+		emit_signal("count_down", timer.time_left)
+		emit_signal("player_scores", player_scores)
+		if (!timer.is_stopped() && !timer.paused):
+			handle_event_area(delta)
+			handle_players(delta)
 
 
 func get_max_time():
 	return TIMER_MAX
 
 
+func _set_event_scale(value):
+	event_scale = value
+	if $Area2D/CollisionShape2D:
+		$Area2D/CollisionShape2D.scale = event_scale
+		$Texture/StyleBox2D.scale = event_scale
+
 func initialize():
+	_set_event_scale(event_scale)
+	particles.emitting = true
 	start_event()
-	$Area2D/CollisionShape2D.scale = event_scale
-	$Area2D/ShapePolygon2D.scale = event_scale
-	$Area2D/ShapePolygon2D.visible = true
+	visible = true
 
 
 func handle_event_area(delta):
-	if ($Timer.time_left > 2.0):
-		$Area2D/CollisionShape2D.scale -= (event_scale / TIMER_MAX * 0.5) * delta
-		$Area2D/ShapePolygon2D.scale = $Area2D/CollisionShape2D.scale
+	if (timer.time_left > 1.0):
+		collision_box.scale -= (event_scale / TIMER_MAX * 0.5) * delta
+		style_box.scale = collision_box.scale
 	else:
-		$Area2D/ShapePolygon2D.color = $Area2D/ShapePolygon2D.color.lightened(0.2)
+		var box: StyleBoxFlat = style_box.style_box
+		box.border_color = box.border_color.darkened(0.01)
 
 
 func handle_players(delta):
@@ -54,8 +72,8 @@ func handle_players(delta):
 func _on_Timer_timeout():
 	if (!player_scores.empty()):
 		var winner_id = determine_winner()
-		$Area2D/CollisionShape2D.disabled = true
-		$Area2D.visible = false
+		collision_box.disabled = true
+		visible = false
 		emit_signal("heal_player", winner_id)
 		end_event()
 
@@ -80,16 +98,16 @@ func _on_Area2D_body_entered(body):
 		player_scores[body.player_id] = 0.0
 		
 	if (timer_started):
-		$Timer.set_paused(false)
+		timer.set_paused(false)
 	else:
-		$Timer.start(TIMER_MAX)
+		timer.start(TIMER_MAX)
 		timer_started = true
 
 
 func _on_Area2D_body_exited(body):
 	current_players.erase(body.player_id)
 	if (current_players.empty()):
-		$Timer.set_paused(true)
+		timer.set_paused(true)
 
 func start_event():
 	GlobalBus.register_event(self)

@@ -115,6 +115,8 @@ position = Vector2( 0, -325 )
 element = ExtResource( 2 )
 
 [node name="Event" parent="Objects" instance=ExtResource( 8 )]
+visible = false
+event_scale = Vector2( 0.8, 0.8 )
 
 [node name="Players" type="Node2D" parent="."]
 
