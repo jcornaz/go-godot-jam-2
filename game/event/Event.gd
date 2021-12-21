@@ -25,6 +25,7 @@ onready var timer = $Timer
 func _ready():
 	visible = false
 	particles.emitting = false
+	$Texture/AnimationPlayer.play("RESET")
 	
 
 func _process(delta):
@@ -49,6 +50,7 @@ func _set_event_scale(value):
 func initialize():
 	_set_event_scale(event_scale)
 	particles.emitting = true
+	$Texture/AnimationPlayer.play("fade_in")
 	start_event()
 	visible = true
 
