@@ -24,7 +24,6 @@ onready var timer = $Timer
 
 func _ready():
 	visible = false
-	particles.emitting = false
 	$Texture/AnimationPlayer.play("RESET")
 	
 
@@ -49,8 +48,6 @@ func _set_event_scale(value):
 
 func initialize():
 	_set_event_scale(event_scale)
-	particles.emitting = true
-	$Texture/AnimationPlayer.play("fade_in")
 	start_event()
 	visible = true
 
@@ -75,7 +72,6 @@ func _on_Timer_timeout():
 	if (!player_scores.empty()):
 		var winner_id = determine_winner()
 		collision_box.disabled = true
-		visible = false
 		emit_signal("heal_player", winner_id)
 		end_event()
 
@@ -112,10 +108,11 @@ func _on_Area2D_body_exited(body):
 		timer.set_paused(true)
 
 func start_event():
+	$Texture/AnimationPlayer.play("fade-in")
 	GlobalBus.register_event(self)
 	emit_signal("event_started")
 
 func end_event():
 	emit_signal("event_ended")
 	GlobalBus.unregister_event(self)
-	self.queue_free()
+	$Texture/AnimationPlayer.play("fade-out")

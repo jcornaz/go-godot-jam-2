@@ -162,6 +162,7 @@ player_id = 3
 
 [node name="Event" parent="." instance=ExtResource( 7 )]
 visible = false
+TIMER_MAX = 4
 
 [node name="Start Timer" type="Timer" parent="Event"]
 wait_time = 2.0

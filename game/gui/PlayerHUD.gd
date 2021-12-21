@@ -65,11 +65,9 @@ func _set_player_score(player_scores: Dictionary):
 		event_bar.max_value = 100.0
 	else:
 		event_bar.max_value = total_score
-	print("max_score (" + str(player_id)+ ") = " + str(total_score))
 	
 	var player_score = 0.0
 	if player_id in player_scores:
 		player_score = player_scores[player_id]
 	event_bar.value = player_score
-	print("score (" + str(player_id)+ ") = " + str(player_score))
 	

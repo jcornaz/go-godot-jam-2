@@ -12,7 +12,6 @@ func _on_player_HealthChanged(health: float, player_num: int):
 
 
 func _on_player_EnergySet(slot: int, ability: Ability, player_num: int):
-	print(str("player ", player_num, " conjured ", ability, " on slot ", slot))
 	var texture: TextureRect = get_node(str("Player_", player_num, "/Slot", slot))
 	texture.texture = ability.texture
 	texture.visible = true
