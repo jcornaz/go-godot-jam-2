@@ -11,7 +11,7 @@ Go Godot Jam 2 entry
   - [ ] Spawn fire and ice areas randomly
   - [ ] Polish
 - [ ] Rebalance gameplay to be less spamy
-- [ ] Redesign event UI
+- [x] Redesign event UI
 
 ### Polish (Optional)
 - [ ] Spawn particles on bullet impact
