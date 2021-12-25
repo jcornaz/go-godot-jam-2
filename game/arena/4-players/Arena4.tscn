@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/arena/4-players/Arena4.gd" type="Script" id=1]
 [ext_resource path="res://lib/StyleBox2D.gd" type="Script" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://game/objects/EnergySpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/objects/Wall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/event/Event.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/arena/4-players/EnvironmentSpawner.gd" type="Script" id=8]
+[ext_resource path="res://game/environment/Frozen Ground.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/environment/Burning Ground.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.423529, 0.423529, 0.423529, 1 )
@@ -63,6 +66,13 @@ position = Vector2( 0, 850 )
 shape = SubResource( 5 )
 
 [node name="Objects" type="Node2D" parent="."]
+
+[node name="EnvironmentSpawner" type="Node2D" parent="Objects"]
+script = ExtResource( 8 )
+lower_position = Vector2( -600, -600 )
+upper_position = Vector2( 600, 600 )
+ice_effect = ExtResource( 9 )
+fire_effect = ExtResource( 10 )
 
 [node name="Walls" type="Node2D" parent="Objects"]
 position = Vector2( 1, 0 )
@@ -161,7 +171,6 @@ position = Vector2( 0, 600 )
 player_id = 3
 
 [node name="Event" parent="." instance=ExtResource( 7 )]
-visible = false
 TIMER_MAX = 4
 
 [node name="Start Timer" type="Timer" parent="Event"]

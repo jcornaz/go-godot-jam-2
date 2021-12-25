@@ -15,3 +15,6 @@ func _on_fire_entered(body: Player):
 func _on_fire_exited(body: Player):
 	var index = burning_players.find(body)
 	burning_players.remove(index)
+
+func despawn():
+	$"Ground Effect".despawn()

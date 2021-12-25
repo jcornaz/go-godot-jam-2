@@ -7,3 +7,6 @@ func _on_ice_entered(body: Player):
 func _on_ice_exited(body: Player):
 	body.is_sliding = false
 	body.sliding_direction = null
+
+func despawn():
+	$"Ground Effect".despawn()

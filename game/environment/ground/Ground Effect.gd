@@ -10,6 +10,8 @@ export var size: int setget set_size
 func _ready():
 	set_color(color)
 	set_size(size)
+	$AnimationPlayer.play("RESET")
+	$AnimationPlayer.play("fade-in")
 
 func set_color(value: Color):
 	color = value
@@ -39,3 +41,7 @@ func _on_ground_entered(body):
 func _on_ground_exited(body):
 	if body is Player:
 		emit_signal("on_ground_exited", body)
+
+func despawn():
+	$AnimationPlayer.play_backwards("fade-in")
+	$AnimationPlayer.connect("animation_changed", self, "queue_free")
