@@ -55,6 +55,7 @@ visible = false
 polygon = PoolVector2Array( -16, 0, -14, 5, 10, 0, -14, -5 )
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 

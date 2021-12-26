@@ -8,6 +8,6 @@
 script = ExtResource( 3 )
 name = "Spark"
 description = "A sparkling projectile."
-cooldown = 0.1
+cooldown = 0.3
 bullet = ExtResource( 2 )
 texture = ExtResource( 1 )
