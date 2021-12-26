@@ -4,14 +4,7 @@ Go Godot Jam 2 entry
 ## To-Do:
 
 ### Gameplay
-- [x] 4 Player Game Mode
-  - [x] Create Arena
-  - [x] Enable Split Screen
-  - [x] Enable HUD
-  - [x] Spawn fire and ice areas randomly
-  - [x] Polish
-- [ ] Rebalance gameplay to be less spamy
-- [x] Redesign event UI
+- [ ] Night Mode
 
 ### Polish (Optional)
 - [ ] Spawn particles on bullet impact
@@ -19,4 +12,7 @@ Go Godot Jam 2 entry
 
 ### Bugs
 - [ ] A direct hit from coldball will hit all icicles
+- [ ] Re-enable sounds
+- [ ] Players randomly ignite
+- [ ] Players can hit themselves with icicles
 
