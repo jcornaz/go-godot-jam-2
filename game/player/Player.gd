@@ -8,12 +8,15 @@ signal Dead
 enum PlayerId {
 	Player1, Player2, Player3, Player4
 }
+enum PlayerColor {
+	red, blue
+}
 
 export (PlayerId) var player_id
 const SPEED = 20000
 
 export var INITIAL_HEALTH = 100
-export var COLOR = "blue"
+export (PlayerColor) var COLOR = PlayerColor.red
 export var SHOOT_OFFSET = 40
 export var IS_INDEPENDENT: bool = false setget _set_is_independent
 
@@ -35,7 +38,7 @@ var _abilities: Dictionary = {} #Dict<Slot, Ability>
 enum Slot { PRIMARY, SECONDARY }
 
 func _ready():
-	$WispAnimation.play(COLOR)
+	_set_animation_color()
 	var slot1 = Slot.PRIMARY
 	_abilities[slot1] = _combine_elements(_element_a.get(slot1), _element_b.get(slot1))
 	var slot2 = Slot.SECONDARY
@@ -45,6 +48,15 @@ func _ready():
 	is_sliding = false
 	GlobalBus.connect("event_registered", self, "_register_event")
 	GlobalBus.connect("event_unregistered", self, "_unregister_event")
+
+func _set_animation_color():
+	match COLOR:
+		PlayerColor.red:
+			$WispAnimation.play("red")
+		PlayerColor.blue:
+			$WispAnimation.play("blue")
+		_:
+			printerr("Player has assigned color "+ str(COLOR) + " which does not have a corresponding animation!")
 
 func _register_event(event: Event):
 	event.connect("heal_player", self, "_on_Event_heal_player")

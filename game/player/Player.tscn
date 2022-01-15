@@ -139,7 +139,6 @@ shape = SubResource( 2 )
 [node name="WispAnimation" parent="." instance=ExtResource( 4 )]
 material = SubResource( 7 )
 z_index = 100
-frame = 12
 playing = false
 
 [node name="Hurtbox" type="Area2D" parent="."]

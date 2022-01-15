@@ -147,6 +147,6 @@ animations = [ {
 [node name="AnimatedSprite" type="AnimatedSprite"]
 scale = Vector2( 1.4, 1.4 )
 frames = SubResource( 17 )
-animation = "red"
-frame = 6
+animation = "blue"
+frame = 13
 playing = true
