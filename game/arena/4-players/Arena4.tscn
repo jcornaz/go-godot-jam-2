@@ -157,20 +157,22 @@ position = Vector2( -600, -600 )
 
 [node name="Player1" parent="Players" instance=ExtResource( 4 )]
 position = Vector2( -600, 0 )
+COLOR = 1
 
 [node name="Player2" parent="Players" instance=ExtResource( 4 )]
 position = Vector2( 600, 0 )
 player_id = 1
-COLOR = 1
+COLOR = 2
 
 [node name="Player3" parent="Players" instance=ExtResource( 4 )]
 position = Vector2( 0, -600 )
 player_id = 2
+COLOR = 3
 
 [node name="Player4" parent="Players" instance=ExtResource( 4 )]
 position = Vector2( 0, 600 )
 player_id = 3
-COLOR = 1
+COLOR = 4
 
 [node name="Event" parent="." instance=ExtResource( 7 )]
 TIMER_MAX = 4

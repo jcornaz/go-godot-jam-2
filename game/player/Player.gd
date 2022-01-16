@@ -9,14 +9,14 @@ enum PlayerId {
 	Player1, Player2, Player3, Player4
 }
 enum PlayerColor {
-	red, blue
+	blue, brown, green, red, yellow
 }
 
 export (PlayerId) var player_id
 const SPEED = 20000
 
 export var INITIAL_HEALTH = 100
-export (PlayerColor) var COLOR = PlayerColor.red
+export (PlayerColor) var COLOR
 export var SHOOT_OFFSET = 40
 export var IS_INDEPENDENT: bool = false setget _set_is_independent
 
@@ -50,11 +50,18 @@ func _ready():
 	GlobalBus.connect("event_unregistered", self, "_unregister_event")
 
 func _set_animation_color():
+	print($WispAnimation.frames.get_animation_names())
 	match COLOR:
-		PlayerColor.red:
-			$WispAnimation.play("red")
 		PlayerColor.blue:
 			$WispAnimation.play("blue")
+		PlayerColor.brown:
+			$WispAnimation.play("brown")
+		PlayerColor.green:
+			$WispAnimation.play("green")
+		PlayerColor.red:
+			$WispAnimation.play("red")
+		PlayerColor.yellow:
+			$WispAnimation.play("yellow")
 		_:
 			printerr("Player has assigned color "+ str(COLOR) + " which does not have a corresponding animation!")
 
