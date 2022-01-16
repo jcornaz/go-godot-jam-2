@@ -19,7 +19,15 @@ func _on_EndGame_pressed():
 
 
 func handle_player_death(player_id: String):
-	$Menu/View/EndGameMessage.text = "Player " + player_id + " perished!"
+	handle_game_finished("Player " + player_id + " perished!")
+
+
+func handle_player_win(player_id: String):
+	handle_game_finished("Player " + player_id + " won!")
+
+
+func handle_game_finished(message: String):
+	$Menu/View/EndGameMessage.text = message
 	$Menu/View/ItemList/StartGame.text = "Play Again"
 	$Menu/View/ItemList/StartGame.grab_focus()
 	$Menu.show()

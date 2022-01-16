@@ -50,7 +50,6 @@ func _ready():
 	GlobalBus.connect("event_unregistered", self, "_unregister_event")
 
 func _set_animation_color():
-	print($WispAnimation.frames.get_animation_names())
 	match COLOR:
 		PlayerColor.blue:
 			$WispAnimation.play("blue")
@@ -201,6 +200,7 @@ func set_health(new_health: float, display: bool = true):
 	emit_signal("HealthChanged", health)
 	if health <= 0:
 		emit_signal("Dead")
+		queue_free()
 
 func display_damage_taken():
 	$HurtSound.play()

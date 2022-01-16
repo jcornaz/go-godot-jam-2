@@ -358,5 +358,5 @@ animations = [ {
 scale = Vector2( 1.4, 1.4 )
 frames = SubResource( 17 )
 animation = "blue"
-frame = 3
+frame = 9
 playing = true

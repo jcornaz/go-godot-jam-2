@@ -18,7 +18,7 @@ func _on_game_started():
 
 
 func _on_game_finished(num):
-	$MainMenu.handle_player_death(str(num))
+	$MainMenu.handle_player_win(str(num))
 
 func _setArena(value):
 	_current_arena = value.instance()
